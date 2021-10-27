@@ -1,8 +1,10 @@
 const Projects = () => {
     return (
-        <>
-            <h1 style={{ height: '700px', backgroundColor: '#f00' }}>Projects</h1>
-        </>
+        <div className="projects" style={{ height: '200px', backgroundColor: '#f00' }}>
+            <div className="container">
+                <h1>Projects</h1>
+            </div>
+        </div>
     )
 }
 

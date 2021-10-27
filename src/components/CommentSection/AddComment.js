@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-const AddComment = ({ onAddComment }) => {
+const AddComment = ({ addComment }) => {
     const [user, setUser] = useState('')
     const [text, setText] = useState('')
     const [rating, setRating] = useState(3)
@@ -9,11 +9,17 @@ const AddComment = ({ onAddComment }) => {
 
         e.preventDefault()
         console.log([user, text, rating])
-        onAddComment({ user, text, rating })
 
-        setUser('')
-        setText('')
-        setRating(3)
+        if (!user) {
+            alert('please add username')
+
+        } else {
+            addComment({ user, text, rating })
+
+            setUser('')
+            setText('')
+            setRating(3)
+        }
     }
 
     return (

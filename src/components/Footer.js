@@ -1,9 +1,13 @@
 const Footer = () => {
     return (
-        <>
-            <p style={{ backgroundColor: '#203', margin: '0', padding: '3rem' }}>THIS IS A FOOTER</p>
-        </>
+        <div className="footer" style={{ backgroundColor: '#203', margin: '0', padding: '3rem' }}>
+            <div className="container">
+
+                <p >THIS IS A FOOTER</p>
+            </div>
+        </div>
     )
 }
 
 export default Footer
+

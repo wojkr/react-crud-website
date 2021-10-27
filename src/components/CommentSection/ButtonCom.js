@@ -1,7 +1,7 @@
-const ButtonCom = ({ commentsToggler }) => {
+const ButtonCom = ({ commentsToggler, showComments }) => {
     return (
         <>
-            <button className="btn" onClick={commentsToggler}>showComments</button>
+            <button className="btn" onClick={commentsToggler}>{showComments ? 'hideComments' : 'showAllComments'}</button>
         </>
     )
 }

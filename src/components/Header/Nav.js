@@ -1,16 +1,16 @@
 const Nav = () => {
     return (
         <>
-            <nav>
-                <ul>
+            <nav className="nav">
+                <ul className="container flex-row flex-evenly">
                     <li>
-                        <a>NavItem1</a>
+                        <a className="nav-item">NavItem1</a>
                     </li>
                     <li>
-                        <a>NavItem2</a>
+                        <a className="nav-item">NavItem2</a>
                     </li>
                     <li>
-                        <a>NavItem3</a>
+                        <a className="nav-item">NavItem3</a>
                     </li>
                 </ul>
             </nav>

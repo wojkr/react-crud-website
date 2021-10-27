@@ -6,7 +6,7 @@ const NavToggler = ({ onClick, showNavbar }) => {
             <button
                 onClick={onClick}
                 className="nav-toggler"
-            >{showNavbar ? 'showNav' : 'closeNav'}</button>
+            >{showNavbar ? 'closeNav' : 'showNav'}</button>
         </>
     )
 }

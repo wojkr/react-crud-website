@@ -1,12 +1,12 @@
 import ButtonCom from './ButtonCom'
 import AddComment from './AddComment'
 
-const HeaderCom = ({ commentsToggler, onAddComment }) => {
+const HeaderCom = ({ commentsToggler, addComment, showComments }) => {
+
     return (
         <>
-            <h1>Hello</h1>
-            <AddComment onAddComment={onAddComment} />
-            <ButtonCom commentsToggler={commentsToggler} />
+            <AddComment addComment={addComment} />
+            <ButtonCom commentsToggler={commentsToggler} showComments={showComments} />
         </>
     )
 }

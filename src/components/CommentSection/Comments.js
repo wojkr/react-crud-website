@@ -1,10 +1,10 @@
 import Comment from "./Comment"
 
-const Comments = ({ comments }) => {
+const Comments = ({ editComment, deleteComment, comments }) => {
     return (
         <>
             {
-                comments.map((comment) => (<Comment key={comment.id} comment={comment} />))
+                comments.map((comment) => (<Comment key={comment.id} editComment={editComment} deleteComment={deleteComment} comment={comment} />))
             }
         </>
     )
