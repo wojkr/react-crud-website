@@ -27,17 +27,17 @@ const AddComment = ({ addComment }) => {
             <form onSubmit={onSubmit} className="flex-column">
                 <div className="container-100 flex-row flex-evenly">
                     <div className="flex-column flex-a-start flex-grow">
-                        <label for="comment-form-user">Username: </label>
+                        <label htmlFor="comment-form-user">Username: </label>
                         <input className="comment-form-user w-80" id="comment-form-user" type="text" value={user} placeholder="username" onChange={(e) => setUser(e.target.value)}></input>
                     </div>
                     <div className="flex-column flex-a-start flex-grow">
-                        <label for="comment-form-rating">Rating: </label>
+                        <label htmlFor="comment-form-rating">Rating: </label>
                         <input className="comment-form w-80" id="comment-form-rating" type="number" value={rating} placeholder="rating" onChange={(e) => setRating(e.target.value)}></input>
                     </div>
                     {/* <input type="text" value={text} placeholder="text" onChange={(e) => setText(e.target.value)}></input> */}
                 </div>
                 <div className="conatainer-100 flex-column flex-a-start w-100">
-                    <label for="comment-form-text">Comment: </label>
+                    <label htmlFor="comment-form-text">Comment: </label>
                     <textarea className="comment-form comment-form-text flex-grow w-100" id="comment-form-text" type="text" value={text} placeholder="text" onChange={(e) => setText(e.target.value)}></textarea>
                     <input type="submit" value="post Comment"></input>
                 </div>
