@@ -78,3 +78,11 @@ ul{
   height: 3rem;
   width:100%;
 }
+.alert{
+  position: absolute;
+  top:inherit;
+  left:inherit;
+  background-color: #00f;
+  width:200px;
+  height: 200px;
+}

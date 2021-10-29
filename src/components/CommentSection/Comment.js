@@ -13,15 +13,19 @@ const Comment = ({ editComment, deleteComment, comment }) => {
                 <button onClick={onClick}>goBack</button>
             </>)
         } else {
-            return (<>
-                <h3>{comment.user}<span>
-                    <button onClick={onClick}>edit</button>
-                </span></h3>
+            return (<div className="comment-container flex-column flex-a-start">
+                <div className="container-100 flex-row">
+                    <span><h3>{comment.user}</h3></span><span>
+                        <button onClick={onClick}>edit</button>
+                        <DeleteComment
+                            id={comment.id}
+                            deleteComment={deleteComment}
+                        />
+                    </span>
+                </div>
                 <p>{comment.text}</p>
-                <p><strong>{comment.rating}</strong><span>
-                    <DeleteComment id={comment.id} deleteComment={deleteComment} />
-                </span></p>
-            </>)
+                <p><strong>{comment.rating}</strong></p>
+            </div>)
         }
     }
     return (
