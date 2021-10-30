@@ -7,12 +7,16 @@ import Projects from './components/Projects'
 import Contact from './components/Contact'
 import CommentSection from './components/CommentSection/CommentSection'
 import Footer from './components/Footer'
+import Alert from './components/utils/Alert'
 
 const App = () => {
   //Projects to change name to comments is JSON as well
   const [showNavbar, setShowNavbar] = useState(false)
   const [commentsNumber, setCommentsNumber] = useState(0)
   const [comments, setComments] = useState([])
+  const [showAlert, setShowAlert] = useState(false)
+  const [alertInfo, setAlertInfo] = useState(['', '', () => { }, '', () => { }])
+
   useEffect(() => {
     const getComments = async () => {
       const CommentsFromServer = await fetchComments();
@@ -27,6 +31,7 @@ const App = () => {
     const data = await res.json()
     return data
   }
+  
   const COMMENTS = {
     add: async (comment) => {
       const res = await fetch(`http://localhost:5000/Comments`, {
@@ -58,8 +63,17 @@ const App = () => {
       setComments(newComments)
     },
     delete: async (id) => {
-      await fetch(`http://localhost:5000/Comments/${id}`, { method: 'DELETE' })
-      setComments(comments.filter((comment) => comment.id !== id))
+      const deleteFunc = async (id) => {
+        await fetch(`http://localhost:5000/Comments/${id}`, { method: 'DELETE' })
+        setComments(comments.filter((comment) => comment.id !== id))
+      }
+      ALERT(
+        "are you sure you want to delete comment?",
+        'Yes',
+        [deleteFunc, id],
+        'no',
+        () => { }
+      )
     },
     showMore: () => {
       setCommentsNumber(commentsNumber + 10)
@@ -67,6 +81,31 @@ const App = () => {
     showLess: () => {
       setCommentsNumber(commentsNumber - 10)
     }
+  }
+
+  const ALERT = (message, option1, option1func, option2, option2func) => {
+    setShowAlert(true);
+    setAlertInfo([
+      message,
+      option1,
+      () => {
+        if (option1func[1]) {
+          option1func[0](option1func[1])
+        } else {
+          option1func[0]()
+        }
+        setShowAlert(false)
+      },
+      option2,
+      () => {
+        if (option2func.length > 1) {
+          option2func[0]()
+        } else {
+          option2func()
+        }
+        setShowAlert(false)
+      }
+    ])
   }
 
   return (
@@ -84,6 +123,7 @@ const App = () => {
         comments={comments}
         commentsNumber={commentsNumber}
       />
+      {showAlert && <Alert alertInfo={alertInfo} />}
       <Footer />
     </>
   )
