@@ -1,5 +1,6 @@
 import Comments from './Comments'
 import HeaderCom from './HeaderCom'
+import Sort from './Sort'
 
 const CommentSection = ({ COMMENTS, comments, commentsNumber }) => {
     return (
@@ -9,16 +10,19 @@ const CommentSection = ({ COMMENTS, comments, commentsNumber }) => {
                 <HeaderCom
                     addComment={COMMENTS.add}
                 />
+                <hr></hr>
+                <Sort sort={COMMENTS.sort} />
+                <hr></hr>
+
                 <Comments
                     editComment={COMMENTS.edit}
                     deleteComment={COMMENTS.delete}
                     comments={comments}
                     commentsNumber={commentsNumber}
                 />
-                {commentsNumber <= comments.length && <button onClick={COMMENTS.showMore}>showMoreComments</button>
-                }
-                {commentsNumber >= 10 && <button onClick={COMMENTS.showLess}>showLessComments</button>
-                }
+                {comments.length === 0 && <h3>No comments</h3>}
+                {comments.length !== 0 && commentsNumber <= comments.length && <button onClick={COMMENTS.showMore}>showMoreComments</button>}
+                {commentsNumber >= 10 && <button onClick={COMMENTS.showLess}>showLessComments</button>}
 
             </div>
         </div >

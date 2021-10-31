@@ -5,7 +5,11 @@ import EditComment from "./EditComment"
 const Comment = ({ editComment, deleteComment, comment }) => {
     const [showEdit, setShowEdit] = useState(false)
     const onClick = () => setShowEdit(!showEdit)
-    // no ID in comment Object...
+    const dateToString = (date) => {
+        const newDate = new Date(date)
+        return newDate.toGMTString()
+    }
+
     const content = () => {
         if (showEdit) {
             return (<>
@@ -24,7 +28,7 @@ const Comment = ({ editComment, deleteComment, comment }) => {
                     </span>
                 </div>
                 <p>{comment.text}</p>
-                <p><strong>{comment.rating}</strong></p>
+                <p>Rated: <strong>{comment.rating}</strong> on {dateToString(comment.date)}</p>
             </div>)
         }
     }

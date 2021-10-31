@@ -31,7 +31,7 @@ const App = () => {
     const data = await res.json()
     return data
   }
-  
+
   const COMMENTS = {
     add: async (comment) => {
       const res = await fetch(`http://localhost:5000/Comments`, {
@@ -46,7 +46,6 @@ const App = () => {
       setComments([...comments, data])
     },
     edit: async (comment) => {
-      // const res =
       await fetch(`http://localhost:5000/Comments/${comment.id}`, {
         method: 'PUT',
         headers: {
@@ -80,9 +79,34 @@ const App = () => {
     },
     showLess: () => {
       setCommentsNumber(commentsNumber - 10)
+    },
+    sort: {
+      ratings: {
+        best: () => {
+          const sorted = comments.slice()
+          setComments('')
+          setComments(sorted.sort((a, b) => b.rating - a.rating))
+        },
+        worst: () => {
+          const sorted = comments.slice()
+          setComments('')
+          setComments(sorted.sort((a, b) => a.rating - b.rating))
+        }
+      },
+      date: {
+        newest: () => {
+          const sorted = comments.slice()
+          setComments('')
+          setComments(sorted.sort((a, b) => b.date - a.date))
+        },
+        oldest: () => {
+          const sorted = comments.slice()
+          setComments('')
+          setComments(sorted.sort((a, b) => a.date - b.date))
+        }
+      }
     }
   }
-
   const ALERT = (message, option1, option1func, option2, option2func) => {
     setShowAlert(true);
     setAlertInfo([

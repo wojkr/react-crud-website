@@ -9,13 +9,14 @@ const AddComment = ({ addComment }) => {
 
         e.preventDefault()
         console.log([user, text, rating])
+        const date = new Date(Date.now()).toDateString()
 
         if (!user) {
             alert('please add username')
 
         } else {
-            addComment({ user, text, rating })
-
+            addComment({ user, text, rating, date })
+            console.log(date)
             setUser('')
             setText('')
             setRating(3)
