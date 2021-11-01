@@ -1,6 +1,8 @@
 import { useState } from "react"
+import { FiEdit } from "react-icons/fi"
 import DeleteComment from "./DeleteComment"
 import EditComment from "./EditComment"
+import Votes from './Votes'
 
 const Comment = ({ editComment, deleteComment, comment }) => {
     const [showEdit, setShowEdit] = useState(false)
@@ -13,29 +15,45 @@ const Comment = ({ editComment, deleteComment, comment }) => {
     const content = () => {
         if (showEdit) {
             return (<>
-                <EditComment comment={comment} onClick={onClick} editComment={editComment} />
-                <button onClick={onClick}>goBack</button>
+                <EditComment
+                    comment={comment}
+                    onClick={onClick}
+                    editComment={editComment}
+                />
             </>)
         } else {
-            return (<div className="comment-container flex-column flex-a-start">
-                <div className="container-100 flex-row">
-                    <span><h3>{comment.user}</h3></span><span>
-                        <button onClick={onClick}>edit</button>
-                        <DeleteComment
-                            id={comment.id}
-                            deleteComment={deleteComment}
-                        />
-                    </span>
-                </div>
-                <p>{comment.text}</p>
-                <p>Rated: <strong>{comment.rating}</strong> on {dateToString(comment.date)}</p>
-            </div>)
+            return (
+                <div className="comment-container flex-column flex-a-start">
+                    <div className="container-100 flex-row comment-row-1">
+                        <div className="container-100">
+                            <h3 className="comment-user">{comment.user}</h3>
+                            <p className="comment-rating">Rated: <strong>{comment.rating}/5</strong></p>
+                            <p className="comment-date"> on <i>{dateToString(comment.date)}</i></p>
+                        </div>
+                        <span className="flex-row">
+                            <button
+                                className="button-react-icon"
+                                onClick={onClick}>
+                                <FiEdit
+                                    className="react-icon"
+                                />
+                            </button>
+                            <DeleteComment
+                                id={comment.id}
+                                deleteComment={deleteComment}
+                            />
+                        </span>
+                    </div>
+                    <div className="comment-row-2 container-100 ">
+                        <p className="comment-text">{comment.text}</p>
+                    </div>
+                    <Votes comment={comment} editComment={editComment} />
+                </div >)
         }
     }
     return (
         <>
             {content()}
-            <hr></hr>
         </>
     )
 }

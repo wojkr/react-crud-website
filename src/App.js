@@ -43,7 +43,7 @@ const App = () => {
       })
       const data = await res.json()
 
-      setComments([...comments, data])
+      setComments([data, ...comments])
     },
     edit: async (comment) => {
       await fetch(`http://localhost:5000/Comments/${comment.id}`, {
@@ -91,6 +91,18 @@ const App = () => {
           const sorted = comments.slice()
           setComments('')
           setComments(sorted.sort((a, b) => a.rating - b.rating))
+        }
+      },
+      votes: {
+        best: () => {
+          const sorted = comments.slice()
+          setComments('')
+          setComments(sorted.sort((a, b) => b.votes - a.votes))
+        },
+        worst: () => {
+          const sorted = comments.slice()
+          setComments('')
+          setComments(sorted.sort((a, b) => a.votes - b.votes))
         }
       },
       date: {

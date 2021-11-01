@@ -4,7 +4,7 @@ import Nav from './Nav'
 
 const Header = ({ onClick, showNavbar }) => {
     return (
-        <div className="header" >
+        <div className="header" id="header" >
             <div className="container">
                 <div className="flex-row">
                     <Branding />

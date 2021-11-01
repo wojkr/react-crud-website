@@ -4,15 +4,13 @@ import Sort from './Sort'
 
 const CommentSection = ({ COMMENTS, comments, commentsNumber }) => {
     return (
-        <div className="comment-section" style={{ backgroundColor: '#aaa', overflow: 'hidden' }} >
+        <div className="comment-section" >
             <div className="container">
                 <h1>CommentSection!</h1>
                 <HeaderCom
                     addComment={COMMENTS.add}
                 />
-                <hr></hr>
                 <Sort sort={COMMENTS.sort} />
-                <hr></hr>
 
                 <Comments
                     editComment={COMMENTS.edit}
@@ -24,7 +22,7 @@ const CommentSection = ({ COMMENTS, comments, commentsNumber }) => {
                 {comments.length !== 0 && commentsNumber <= comments.length && <button onClick={COMMENTS.showMore}>showMoreComments</button>}
                 {commentsNumber >= 10 && <button onClick={COMMENTS.showLess}>showLessComments</button>}
 
-            </div>
+            </div >
         </div >
     )
 }

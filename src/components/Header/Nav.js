@@ -4,13 +4,19 @@ const Nav = () => {
             <nav className="nav">
                 <ul className="container flex-row flex-evenly">
                     <li>
-                        <a href="/" className="nav-item">NavItem1</a>
+                        <a href="#showcase" className="nav-item">Home</a>
                     </li>
                     <li>
-                        <a href="/" className="nav-item">NavItem2</a>
+                        <a href="#about" className="nav-item">About</a>
                     </li>
                     <li>
-                        <a href="/" className="nav-item">NavItem3</a>
+                        <a href="#projects" className="nav-item">Projects</a>
+                    </li>
+                    <li>
+                        <a href="#contact" className="nav-item">Contact</a>
+                    </li>
+                    <li>
+                        <a href="#comments" className="nav-item">Comments</a>
                     </li>
                 </ul>
             </nav>

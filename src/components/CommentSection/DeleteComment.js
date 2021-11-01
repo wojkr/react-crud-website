@@ -1,13 +1,19 @@
+import { FiTrash2 } from "react-icons/fi"
+
 const DeleteComment = ({ id, deleteComment }) => {
     const onClick = () => {
-        console.log('clicked delete comment id: ', id)
         deleteComment(id)
-        // window.pageYOffset
     }
 
     return (
         <>
-            <button onClick={onClick}>delete</button>
+            <button
+                className="button-react-icon"
+                onClick={onClick}>
+                <FiTrash2
+                    className="react-icon"
+                />
+            </button>
         </>
     )
 }
