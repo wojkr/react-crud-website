@@ -18,8 +18,8 @@ const Showcase = ({ images }) => {
         <div id="showcase" className="showcase">
             <div className="container">
                 <div className="flex-column flex-center">
-                    <h1 className="showcase-title">#HUG<span className="showcase-title-small">THE</span>MUG</h1>
-                    <button className="showcase-button">learn more</button>
+                    <h1 className="showcase-title">#HUG<span className="showcase-title-small">A</span>MUG</h1>
+                    <a href="#about" className="showcase-button"><i>learn more</i></a>
                 </div>
             </div>
         </div>

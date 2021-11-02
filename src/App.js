@@ -18,7 +18,13 @@ const App = () => {
 
   const [comments, setComments] = useState([])
   const [images, setImages] = useState([])
+  const [offset, setOffset] = useState(0)
 
+  useEffect(() => {
+    window.onscroll = () => {
+      setOffset(window.pageYOffset)
+    }
+  }, [])
 
   const getData = useCallback(async (dataName, setDataFunc) => {
     const DataFromServer = await fetchData(dataName)
@@ -79,9 +85,15 @@ const App = () => {
       )
     },
     showMore: () => {
-      setCommentsNumber(commentsNumber + 10)
+      setCommentsNumber(10)
     },
     showLess: () => {
+      setCommentsNumber(0)
+    },
+    showNext: () => {
+      setCommentsNumber(commentsNumber + 10)
+    },
+    showPrevious: () => {
       setCommentsNumber(commentsNumber - 10)
     },
     sort: {
@@ -153,6 +165,7 @@ const App = () => {
       <Header
         onClick={() => { setShowNavbar(!showNavbar) }}
         showNavbar={showNavbar}
+        offset={offset}
       />
       <Showcase images={images} />
       <About />

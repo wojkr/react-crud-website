@@ -1,8 +1,14 @@
 import Comments from './Comments'
 import HeaderCom from './HeaderCom'
 import Sort from './Sort'
+import NavComments from './NavComments'
+import { useRef } from 'react'
 
 const CommentSection = ({ COMMENTS, comments, commentsNumber }) => {
+
+    const commentsRef = useRef(null)
+    const scrollToComments = () => commentsRef.current.scrollIntoView()
+
     return (
         <div className="comment-section" id="comment-section" >
             <div className="container">
@@ -10,7 +16,10 @@ const CommentSection = ({ COMMENTS, comments, commentsNumber }) => {
                 <HeaderCom
                     addComment={COMMENTS.add}
                 />
-                <Sort sort={COMMENTS.sort} />
+                <Sort
+                    commentsRef={commentsRef}
+                    sort={COMMENTS.sort}
+                />
 
                 <Comments
                     editComment={COMMENTS.edit}
@@ -18,9 +27,12 @@ const CommentSection = ({ COMMENTS, comments, commentsNumber }) => {
                     comments={comments}
                     commentsNumber={commentsNumber}
                 />
-                {comments.length === 0 && <h3>No comments</h3>}
-                {comments.length !== 0 && commentsNumber <= comments.length && <button onClick={COMMENTS.showMore}>showMoreComments</button>}
-                {commentsNumber >= 10 && <button onClick={COMMENTS.showLess}>showLessComments</button>}
+                <NavComments
+                    COMMENTS={COMMENTS}
+                    comments={comments}
+                    commentsNumber={commentsNumber}
+                    scrollToComments={scrollToComments}
+                />
             </div >
         </div >
     )

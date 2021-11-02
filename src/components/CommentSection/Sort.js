@@ -1,9 +1,9 @@
 // import { AiOutlineCaretDown } from 'react-icons/ai'
 import { FiArrowUp, FiArrowDown } from "react-icons/fi"
 
-const Sort = ({ sort }) => {
+const Sort = ({ sort, commentsRef }) => {
     return (
-        <div className="sort-container" >
+        <div id="sort" ref={commentsRef} className="sort-container" >
 
             <div className="flex-row" >
                 <h3>Sort:</h3>

@@ -8,10 +8,7 @@ const Comments = ({ editComment, deleteComment, comments, commentsNumber }) => {
             shownComments.splice(minCommentsNumber)
         }
     } else {
-        if (comments.length < commentsNumber) {
-            commentsNumber = comments.length;
-        }
-        shownComments.splice(commentsNumber)
+        shownComments = shownComments.slice(commentsNumber, commentsNumber + 10)
     }
     return (
         <>
