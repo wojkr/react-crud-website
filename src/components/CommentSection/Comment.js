@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { FiEdit } from "react-icons/fi"
+import DateComment from "./DateComment"
 import DeleteComment from "./DeleteComment"
 import EditComment from "./EditComment"
 import Votes from './Votes'
@@ -7,10 +8,6 @@ import Votes from './Votes'
 const Comment = ({ editComment, deleteComment, comment }) => {
     const [showEdit, setShowEdit] = useState(false)
     const onClick = () => setShowEdit(!showEdit)
-    const dateToString = (date) => {
-        const newDate = new Date(date)
-        return newDate.toGMTString()
-    }
 
     const content = () => {
         if (showEdit) {
@@ -28,7 +25,7 @@ const Comment = ({ editComment, deleteComment, comment }) => {
                         <div className="container-100">
                             <h3 className="comment-user">{comment.user}</h3>
                             <p className="comment-rating">Rated: <strong>{comment.rating}/5</strong></p>
-                            <p className="comment-date"> on <i>{dateToString(comment.date)}</i></p>
+                            <DateComment comment={comment} />
                         </div>
                         <span className="flex-row">
                             <button

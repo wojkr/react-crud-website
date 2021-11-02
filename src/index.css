@@ -1,3 +1,12 @@
+:root{
+  --light-blue: #e1dde6;
+  --light-blue-25: #e1dde666;
+  --light-blue-60: #e1dde6aa;
+  --dark-blue-70: hsla(268, 15%, 48%, 0.7);
+  --lighter-25: #fff4;
+  --lighter-60: #fffa;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -80,18 +89,6 @@ code {
 .p-3{
   padding:1rem;
 }
-
-.nav{
-  border-top: solid 1px #0009;
-}
-
-.nav-item{
-  cursor: pointer;
-  padding: 1rem 2rem;
-}
-.nav-toggler{
-  font-size: large;
-}
 .react-icon{
   font-size: large;
 }
@@ -100,20 +97,71 @@ code {
   border: solid 0.12rem #000;
   border-radius: 0.2rem;
   padding: 0.2rem 0.4rem;
+  cursor: pointer;
+  transition: 300ms;
+}
+.button-react-icon:hover{
+  background-color: var(--light-blue);
 }
 .button-block{
   width:50%;
 }
-ul{
+
+
+.header-main{
+  box-shadow: 0 0 1rem var(--dark-blue-70);
+}
+.nav{
+  overflow: hidden;
+  height:0;
+  transition: 400ms;
+}
+.nav-shown{
+  height: 3rem;
+}
+.nav-ul{
   list-style: none;
-  margin: 0;
   padding-inline-start: 0;
-  padding: 1rem;
+}
+.nav-item{
+  cursor: pointer;
+  padding: 1rem 2rem;
+  color: transparent;
+  text-decoration: none;
+  transition: 300ms;
+}
+.nav-shown li a{
+  color: #000;
+}
+.nav-item:hover{
+  background-color: var(--light-blue-25);
+}
+#showcase{
+  background-image: linear-gradient(#fff7,#fffa,#fff7),url('https://images.unsplash.com/photo-1442512595331-e89e73853f31?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=870&q=80');
+  height: 500px;
+  width:100vw;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #000;
+  transition: 500ms;
+}
+.showcase-title{
+  font-size: 5rem;
+}
+.showcase-title-small{
+font-size:3rem;
+}
+.showcase-button{
+  background-color: transparent;
+  border: solid 0.2rem #000;
+  border-radius: 0.4rem;
+  padding: 0.7rem 1.4rem;
+  font-size: 1.5rem;
+  cursor: pointer;
 }
 
-
 .comment-section{
-  background-color: rgb(225, 221, 230);
+  background-color: var(--light-blue);
 }
 .comment-form{
   border: none;
@@ -130,12 +178,12 @@ ul{
 .comment-container,.sort-container{
   margin: 1rem 0rem;
   padding: 0.4rem 1rem;
-  background-color: #fff4;
+  background-color: var(--lighter-25);
   border-radius: 0.4rem;
   box-shadow: 0 0 1rem #0032;
 }
 .sort-container{
-  background-color: #fffa;
+  background-color: var(--lighter-60);
 }
 .comment-user{
   display: inline-block;
@@ -150,7 +198,7 @@ ul{
   color: #0008;
 }
 .comment-text{
-  background-color: #fff4;
+  background-color: var(--lighter-25);
   margin: 1rem 0;
   padding: 1.5rem 1rem;
   border-radius: 0.4rem;

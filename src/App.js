@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 
 import Header from './components/Header/Header'
 import Showcase from './components/Showcase'
@@ -13,21 +13,25 @@ const App = () => {
   //Projects to change name to comments is JSON as well
   const [showNavbar, setShowNavbar] = useState(false)
   const [commentsNumber, setCommentsNumber] = useState(0)
-  const [comments, setComments] = useState([])
   const [showAlert, setShowAlert] = useState(false)
   const [alertInfo, setAlertInfo] = useState(['', '', () => { }, '', () => { }])
 
-  useEffect(() => {
-    const getComments = async () => {
-      const CommentsFromServer = await fetchComments();
-      setComments(CommentsFromServer)
-    }
+  const [comments, setComments] = useState([])
+  const [images, setImages] = useState([])
 
-    getComments()
+
+  const getData = useCallback(async (dataName, setDataFunc) => {
+    const DataFromServer = await fetchData(dataName)
+    setDataFunc(DataFromServer)
   }, [])
 
-  const fetchComments = async () => {
-    const res = await fetch('http://localhost:5000/Comments')
+  useEffect(() => {
+    getData('Comments', setComments)
+    getData('showcaseImages', setImages)
+  }, [getData])
+
+  const fetchData = async (dataName) => {
+    const res = await fetch(`http://localhost:5000/${dataName}`)
     const data = await res.json()
     return data
   }
@@ -150,7 +154,7 @@ const App = () => {
         onClick={() => { setShowNavbar(!showNavbar) }}
         showNavbar={showNavbar}
       />
-      <Showcase />
+      <Showcase images={images} />
       <About />
       <Projects />
       <Contact />
