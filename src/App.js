@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from 'react'
 
 import Header from './components/Header/Header'
-import Showcase from './components/Showcase'
+import Showcase from './components/Showcase/Showcase'
 import About from './components/About'
 import Projects from './components/Projects'
 import Contact from './components/Contact'
@@ -52,7 +52,6 @@ const App = () => {
         body: JSON.stringify(comment)
       })
       const data = await res.json()
-
       setComments([data, ...comments])
     },
     edit: async (comment) => {
