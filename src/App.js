@@ -8,6 +8,7 @@ import Contact from './components/Contact'
 import CommentSection from './components/CommentSection/CommentSection'
 import Footer from './components/Footer'
 import Alert from './components/utils/Alert'
+import Products from './components/Products/Products'
 
 const App = () => {
   //Projects to change name to comments is JSON as well
@@ -16,8 +17,9 @@ const App = () => {
   const [showAlert, setShowAlert] = useState(false)
   const [alertInfo, setAlertInfo] = useState(['', '', () => { }, '', () => { }])
 
-  const [comments, setComments] = useState([])
   const [images, setImages] = useState([])
+  const [products, setProducts] = useState([])
+  const [comments, setComments] = useState([])
   const [offset, setOffset] = useState(0)
 
   useEffect(() => {
@@ -33,7 +35,8 @@ const App = () => {
 
   useEffect(() => {
     getData('Comments', setComments)
-    getData('showcaseImages', setImages)
+    getData('ShowcaseImages', setImages)
+    getData('Products', setProducts)
   }, [getData])
 
   const fetchData = async (dataName) => {
@@ -168,6 +171,7 @@ const App = () => {
       />
       <Showcase images={images} />
       <About />
+      <Products products={products} />
       <Projects />
       <Contact />
       <CommentSection
