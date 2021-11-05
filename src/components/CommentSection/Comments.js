@@ -2,12 +2,14 @@ import Comment from "./Comment"
 
 const Comments = ({ editComment, deleteComment, comments, commentsNumber }) => {
     let shownComments = comments.slice()
-    if (commentsNumber === 0) {
+    if (commentsNumber === false) {
         let minCommentsNumber = 3;
         if (shownComments.length > minCommentsNumber) {
             shownComments.splice(minCommentsNumber)
         }
-    } else {
+    } else if (commentsNumber === true) {
+        shownComments = shownComments.slice(0, 10)
+    } else if (commentsNumber !== 0) {
         shownComments = shownComments.slice(commentsNumber, commentsNumber + 10)
     }
     return (
@@ -24,66 +26,3 @@ const Comments = ({ editComment, deleteComment, comments, commentsNumber }) => {
     )
 }
 export default Comments
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// import Comment from './Comment'
-
-// const Comments = ({ comments }) => {
-
-//     return (
-//         <>
-//             {comments.map((comment) => (
-//                 <Comment key={comment.id} comment={comment} />
-//             ))}
-//         </>
-//     )
-
-// }
-
-// export default Comments

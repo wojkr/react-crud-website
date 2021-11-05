@@ -7,14 +7,14 @@ import Votes from './Votes'
 
 const Comment = ({ editComment, deleteComment, comment }) => {
     const [showEdit, setShowEdit] = useState(false)
-    const onClick = () => setShowEdit(!showEdit)
+    const editToggler = () => setShowEdit(!showEdit)
 
     const content = () => {
         if (showEdit) {
             return (<>
                 <EditComment
                     comment={comment}
-                    onClick={onClick}
+                    onClick={editToggler}
                     editComment={editComment}
                 />
             </>)
@@ -30,7 +30,7 @@ const Comment = ({ editComment, deleteComment, comment }) => {
                         <span className="flex-row">
                             <button
                                 className="button-react-icon"
-                                onClick={onClick}>
+                                onClick={editToggler}>
                                 <FiEdit
                                     className="react-icon"
                                 />

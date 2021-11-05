@@ -1,7 +1,7 @@
 import Nutritions from "./Nutritions"
 const Product = ({ product }) => {
     return (
-        <div className="product-container flex-column ">
+        <div id="product-container" className="flex-column ">
             <img className="product-img" src={product.img} alt={'foto of ' + product.name}></img>
             <div>
 

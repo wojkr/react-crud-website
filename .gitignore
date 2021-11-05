@@ -30,3 +30,4 @@ db copy.json
 node_modules/*
 README.md
 to-dos.txt
+src/components/utils/COMMENTS_util.js

@@ -5,7 +5,7 @@ const NavComments = ({ comments, commentsNumber, COMMENTS, scrollToComments }) =
     return (
         <div className="container-100 flex-row flex-evenly">
             <div>
-                {comments.length !== 0 && commentsNumber > 9 && commentsNumber > 10 && <button
+                {commentsNumber !== true && comments.length !== 0 && commentsNumber > 10 && <button
                     className="button-react-icon"
                     onClick={() => {
                         COMMENTS.showPrevious()
@@ -16,7 +16,7 @@ const NavComments = ({ comments, commentsNumber, COMMENTS, scrollToComments }) =
             </div>
             <div>
                 {comments.length === 0 && <h3>No comments</h3>}
-                {commentsNumber >= 10 && <button
+                {(commentsNumber >= 10 || commentsNumber === true) && <button
                     className="button-react-icon"
                     onClick={() => {
                         COMMENTS.showLess()
@@ -24,7 +24,7 @@ const NavComments = ({ comments, commentsNumber, COMMENTS, scrollToComments }) =
                     }}>
                     <FiEyeOff className="react-icon" />
                 </button>}
-                {comments.length !== 0 && commentsNumber < 10 && commentsNumber <= comments.length && <button
+                {commentsNumber !== true && comments.length !== 0 && commentsNumber < 10 && commentsNumber <= comments.length && <button
                     className="button-react-icon"
                     onClick={() => {
                         COMMENTS.showMore()
@@ -34,7 +34,7 @@ const NavComments = ({ comments, commentsNumber, COMMENTS, scrollToComments }) =
                 </button>}
             </div>
             <div>
-                {comments.length !== 0 && commentsNumber > 9 && commentsNumber <= comments.length - 10 && <button
+                {(commentsNumber === true || typeof (commentsNumber) === 'number') && comments.length !== 0 && commentsNumber <= comments.length - 10 && <button
                     className="button-react-icon"
                     onClick={() => {
                         COMMENTS.showNext()
