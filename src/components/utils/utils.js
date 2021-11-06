@@ -38,3 +38,45 @@ export const ALERT = (setShowAlertFunc, setAlertInfoFunc, message, option1_text,
         }
     ])
 }
+
+export const checkUsername = (user, setMessageFunc, showPromptFunc = null) => {
+    showPromptFunc && showPromptFunc(false)
+    if (!user || user.length < 5) {
+        setMessageFunc('username has to be at least 5 characters long')
+        return false
+    }
+    return true
+}
+export const checkEmail = (email, setMessageFunc, showPromptFunc = null) => {// func returns true if adress is correct, false if not. Optional to add fuct setting showPrompt value true or false(clearing Previous prompts) 
+    showPromptFunc && showPromptFunc(false)
+    let state = false
+    let copy = email.slice()
+    let domain = 0
+    if (copy.indexOf('@') > 0) domain = copy.slice(copy.indexOf('@') + 1)
+    if (!copy) {
+        setMessageFunc('email adress is mandatory')
+    } else if (!copy.indexOf('@') > 0) {
+        setMessageFunc('email adress has to contain symbol @')
+    } else if (copy.indexOf('@') < 3) {
+        setMessageFunc('email name too short')
+    } else if (domain.length < 5) {
+        setMessageFunc('email domain too short')
+    } else if (domain.indexOf('.') < 2) {
+        setMessageFunc('email domain name too short')
+    } else if (domain.length - 1 - domain.indexOf('.') < 2) {
+        setMessageFunc('email domain too short after a dot')
+    } else if (domain.length - 1 - domain.indexOf('.') > 3) {
+        setMessageFunc('email domain too long after a dot')
+    } else {
+        state = true
+    }
+    return state
+}
+export const checkPassword = (password, setMessageFunc, showPromptFunc = null) => {
+    showPromptFunc && showPromptFunc(false)
+    if (!password || password.length < 8) {
+        setMessageFunc('password has to be at least 8 characters long')
+        return false
+    }
+    return true
+}

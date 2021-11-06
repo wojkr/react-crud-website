@@ -28,7 +28,6 @@ const Comment = ({ editComment, deleteComment, comment, isLoggedIn }) => {
                             <DateComment comment={comment} />
                         </div>
                         <span className="flex-row">
-
                             {isLoggedIn && <>
                                 <button
                                     className="button-react-icon"

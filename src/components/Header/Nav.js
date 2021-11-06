@@ -1,12 +1,16 @@
-const Nav = ({ showNavbar, offset, setShowShowcase, setShowLogInForm, onClick }) => {
-    const onClickShowShowcase = () => {
+const Nav = ({ showNavbar, offset, setShowShowcase, setShowLogInForm, setShowRegisterForm, onClick }) => {
+    const hideForms = () => {
         onClick()
         setShowLogInForm(false)
+        setShowRegisterForm(false)
+    }
+
+    const onClickShowShowcase = () => {
+        hideForms()
         setShowShowcase(true)
     }
     const onClickHideShowcase = () => {
-        onClick()
-        setShowLogInForm(false)
+        hideForms()
         setShowShowcase(false)
     }
     return (

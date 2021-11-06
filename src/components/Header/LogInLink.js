@@ -1,11 +1,21 @@
 import { FiLogIn, FiLogOut } from "react-icons/fi"
 
-const LogInLink = ({ isLoggedIn, logInLinkClicked }) => {
+const LogInLink = ({ isLoggedIn, logInLinkClicked, user }) => {
 
     return (
-        <button id="header-login-button" className="button-react-icon" onClick={logInLinkClicked}>
-            {isLoggedIn ? <FiLogOut className="react-icon" /> : <FiLogIn className="react-icon" />}
-        </button>
+        <div className="flex-row">
+            {isLoggedIn ?
+                <a className="flex-row" href="#user">{user.name}
+                    <div className="user-avatar-container">
+                        <img className="user-avatar" src={user.avatar}></img>
+                    </div>
+                </a> :
+                <p>Log in:</p>
+            }
+            <button id="header-login-button" className="button-react-icon" onClick={logInLinkClicked}>
+                {isLoggedIn ? <FiLogOut className="react-icon" /> : <FiLogIn className="react-icon" />}
+            </button>
+        </div>
     )
 }
 export default LogInLink
