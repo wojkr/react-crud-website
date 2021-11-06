@@ -2,7 +2,7 @@ import Image from "./Image"
 import { useState, useEffect } from "react"
 import { getData } from "../utils/utils"
 
-const Showcase = () => {
+const Showcase = ({ showShowcase, hideShowcase }) => {
 
     const [images, setImages] = useState([])
 
@@ -40,7 +40,7 @@ const Showcase = () => {
 
     return (
         <>
-            <div id="showcase" className="showcase">
+            <div id="showcase" className={showShowcase ? "showcase" : "showcase h-0"}>
                 <div className="showcase-img-container">
                     {images.length > 1 && images.map(
                         image =>
@@ -53,7 +53,7 @@ const Showcase = () => {
                 <div className="container" >
                     <div className="flex-column flex-center">
                         <h1 className="showcase-title">#HUG<span className="showcase-title-small">A</span>MUG</h1>
-                        <a href="#about" className="showcase-button"><i>learn more</i></a>
+                        <a href="#header" className="showcase-button" onClick={hideShowcase}><i>learn more</i></a>
                     </div>
                 </div>
             </div>

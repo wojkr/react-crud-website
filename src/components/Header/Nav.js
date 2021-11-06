@@ -1,22 +1,32 @@
-const Nav = ({ showNavbar, onClick }) => {
+const Nav = ({ showNavbar, offset, setShowShowcase, setShowLogInForm, onClick }) => {
+    const onClickShowShowcase = () => {
+        onClick()
+        setShowLogInForm(false)
+        setShowShowcase(true)
+    }
+    const onClickHideShowcase = () => {
+        onClick()
+        setShowLogInForm(false)
+        setShowShowcase(false)
+    }
     return (
         <>
             <nav className={showNavbar ? "nav nav-shown" : "nav"}>
                 <ul className="nav-ul container flex-row flex-evenly">
                     <li>
-                        <a href="#showcase" className="nav-item" onClick={onClick} >Home</a>
+                        <a href="#Home" className="nav-item" onClick={onClickShowShowcase}>Home</a>
                     </li>
                     <li>
-                        <a href="#about" className="nav-item" onClick={onClick} >About</a>
+                        <a href={offset > 100 ? '#about' : '#Home'} className="nav-item" onClick={onClickHideShowcase} >About</a>
                     </li>
                     <li>
-                        <a href="#projects" className="nav-item" onClick={onClick} >Projects</a>
+                        <a href="#projects" className="nav-item" onClick={onClickHideShowcase}>Projects</a>
                     </li>
                     <li>
-                        <a href="#contact" className="nav-item" onClick={onClick}>Contact</a>
+                        <a href="#contact" className="nav-item" onClick={onClickHideShowcase}>Contact</a>
                     </li>
                     <li>
-                        <a href="#comment-section" className="nav-item" onClick={onClick} >Comments</a>
+                        <a href="#comment-section" className="nav-item" onClick={onClickHideShowcase}>Reviews</a>
                     </li>
                 </ul>
             </nav>

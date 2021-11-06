@@ -3,10 +3,11 @@ import HeaderCom from './HeaderCom'
 import Sort from './Sort'
 import NavComments from './NavComments'
 import Alert from '../utils/Alert'
+import { FiLogIn } from 'react-icons/fi'
 import { useState, useEffect, useRef } from 'react'
 import { getData, ALERT } from '../utils/utils'
 
-const CommentSection = () => {
+const CommentSection = ({ isLoggedIn, setShowLogInForm }) => {
 
     const commentsRef = useRef(null)
     const scrollToComments = () => commentsRef.current.scrollIntoView()
@@ -123,15 +124,20 @@ const CommentSection = () => {
         }
     }
 
+    const goToLogInForm = () => {
+        setShowLogInForm(true)
+    }
 
     return (
         <>
             <div className="comment-section" id="comment-section" >
                 <div className="container">
                     <h1>CommentSection!</h1>
-                    <HeaderCom
+
+                    {isLoggedIn ? <HeaderCom
                         addComment={COMMENTS.add}
                     />
+                        : <h3><button className="button-react-icon" onClick={goToLogInForm}><FiLogIn className="react-icon" /></button>Log in if you want to add review.</h3>}
                     <Sort
                         commentsRef={commentsRef}
                         sort={COMMENTS.sort}
@@ -141,6 +147,7 @@ const CommentSection = () => {
                         deleteComment={COMMENTS.delete}
                         comments={comments}
                         commentsNumber={commentsNumber}
+                        isLoggedIn={isLoggedIn}
                     />
                     <NavComments
                         COMMENTS={COMMENTS}

@@ -5,7 +5,7 @@ import DeleteComment from "./DeleteComment"
 import EditComment from "./EditComment"
 import Votes from './Votes'
 
-const Comment = ({ editComment, deleteComment, comment }) => {
+const Comment = ({ editComment, deleteComment, comment, isLoggedIn }) => {
     const [showEdit, setShowEdit] = useState(false)
     const editToggler = () => setShowEdit(!showEdit)
 
@@ -28,23 +28,26 @@ const Comment = ({ editComment, deleteComment, comment }) => {
                             <DateComment comment={comment} />
                         </div>
                         <span className="flex-row">
-                            <button
-                                className="button-react-icon"
-                                onClick={editToggler}>
-                                <FiEdit
-                                    className="react-icon"
+
+                            {isLoggedIn && <>
+                                <button
+                                    className="button-react-icon"
+                                    onClick={editToggler}>
+                                    <FiEdit
+                                        className="react-icon"
+                                    />
+                                </button>
+                                <DeleteComment
+                                    id={comment.id}
+                                    deleteComment={deleteComment}
                                 />
-                            </button>
-                            <DeleteComment
-                                id={comment.id}
-                                deleteComment={deleteComment}
-                            />
+                            </>}
                         </span>
                     </div>
                     <div className="comment-row-2 container-100 ">
                         <p className="comment-text">{comment.text}</p>
                     </div>
-                    <Votes comment={comment} editComment={editComment} />
+                    <Votes comment={comment} editComment={editComment} isLoggedIn={isLoggedIn} />
                 </div >)
         }
     }

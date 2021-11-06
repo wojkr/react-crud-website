@@ -1,6 +1,6 @@
 import Comment from "./Comment"
 
-const Comments = ({ editComment, deleteComment, comments, commentsNumber }) => {
+const Comments = ({ editComment, deleteComment, comments, commentsNumber, isLoggedIn }) => {
     let shownComments = comments.slice()
     if (commentsNumber === false) {
         let minCommentsNumber = 3;
@@ -20,6 +20,7 @@ const Comments = ({ editComment, deleteComment, comments, commentsNumber }) => {
                     editComment={editComment}
                     deleteComment={deleteComment}
                     comment={comment}
+                    isLoggedIn={isLoggedIn}
                 />))
             }
         </>
