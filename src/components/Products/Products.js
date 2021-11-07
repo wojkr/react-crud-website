@@ -5,7 +5,7 @@ const Products = ({ products }) => {
         <div id="products-container" className="container-100">
             <div className="container">
                 <h1>Best quality, made of the best coffee from around the world. </h1>
-                <div className="flex-row flex-evenly flex-a-stretch">
+                <div className="flex-row flex-center flex-a-stretch flex-wrap">
                     {products.map((product) => (
                         <Product key={product.id} product={product} />
                     )

@@ -22,7 +22,7 @@ const Group = ({ group }) => {
                 <div className="w-80">
                     <p>{group.description}</p>
                     <p>{group.membersId}</p>
-                    <p>Membership monthly cost: ${group.cost}</p>
+                    <p>Membership monthly cost: £{group.cost}</p>
                 </div>
                 <div className="w-40">
                     <p>meetings {group.date}</p>

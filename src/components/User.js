@@ -9,39 +9,39 @@ const User = ({ user }) => {
                     <div className="user-avatar-big-container">
                         <img className="user-avatar-big" src={user.avatar} alt={user.name}></img>
                     </div>
-                    <div className="flex-row user-border-light">
+                    <div className="flex-row border-light">
                         <h1>{user.name}</h1>
                         <button className="button-react-icon"><FiEdit className="react-icon" /></button>
                     </div>
                     <p>Bio: {user.bio}</p>
-                    <p className="user-border-light" >Membership from {user.joined}</p>
-                    <h4 className="user-border-light" >Birthday: {user.birthday}</h4>
+                    <p className="border-light" >Membership from {user.joined}</p>
+                    <h4 className="border-light" >Birthday: {user.birthday}</h4>
                     {user.groups ?
-                        <div className="user-border-light">
+                        <div className="border-light">
                             <p>Group Member of </p>
                             <ul>
                                 {user.groups.map((group) => (
-                                    <li key={group}>{group}</li>
+                                    <li key={group} className="list-circle">{group}</li>
                                 ))}
                             </ul>
                         </div>
                         :
-                        <p className="user-border-light" >Did not join any Group yet</p>
+                        <p className="border-light" >Did not join any Group yet</p>
                     }
-                    <p className="user-border-light" >Hobby: </p>
+                    <p className="border-light" >Hobby: </p>
                     {user.hobby ?
                         <>
                             <ul>
                                 {user.hobby.map((hobby) => (
-                                    <li key={hobby}>{hobby}</li>
+                                    <li key={hobby} className="list-circle">{hobby}</li>
                                 ))}
                             </ul>
                         </>
                         :
                         <li>Not Added Yet</li>
                     }
-                    <p className="user-border-light" >Favorite Drink: <a href={("/products/beverage/" + user.favoriteDrinkId)}>{user.favoriteDrink}</a></p>
-                    <p>Favorite Cookies: <a href={("/products/cookie/" + user.favoriteCookieId)}>{user.favoriteCookie}</a></p>
+                    <p className="border-light" >Favorite Drink: <a href={("#product-" + user.favoriteDrinkId)}>{user.favoriteDrink}</a></p>
+                    <p>Favorite Cookies: <a href={("#product-" + user.favoriteCookieId)}>{user.favoriteCookie}</a></p>
                 </div>
                 <div className="container-100 flex-column">
                     <div className="user-image-container flex-grow">
