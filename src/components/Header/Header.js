@@ -40,7 +40,7 @@ const Header = ({ onClick, showNavbar, setShowShowcase, offset, isLoggedIn, setI
                     <div className="container flex-row">
                         <Branding />
                         <div className="flex-row">
-                            <LogInLink user={user} isLoggedIn={isLoggedIn} logInLinkClicked={logInLinkClicked} />
+                            <LogInLink user={user} isLoggedIn={isLoggedIn} logInLinkClicked={logInLinkClicked} setShowShowcase={setShowShowcase} />
                             <NavToggler onClick={onClick} showNavbar={showNavbar} />
                         </div>
                     </div>

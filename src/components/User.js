@@ -1,7 +1,6 @@
 import { FiEdit } from "react-icons/fi"
 
 const User = ({ user }) => {
-    console.log(user)
     return (
         <div id="user" className="full-page default-background">
             <div className="container flex-row flex-center">

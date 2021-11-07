@@ -125,6 +125,14 @@ html{
   max-width: 100vw;
   overflow: hidden;
 }
+.hidden{
+  /* max-width: 100vw;
+  max-height: 100vh; */
+  overflow: hidden;
+}
+.transition-400{
+  transition: 400ms;
+}
 
 .message-error{
   box-shadow: inset 0 0 1rem #f00;
@@ -321,11 +329,6 @@ html{
   height: 400px;
   box-shadow: 0 0 1rem #999;
 }
-.hidden{
-  max-width: 100vw;
-  max-height: 100vh;
-  overflow: hidden;
-}
 #about-title{
   display: grid;
   place-items: center;
@@ -363,6 +366,34 @@ html{
   background-color: #fffa;
   box-shadow: inset 0 0 1rem #fff;
 }
+#groups{
+  margin-top: 1rem;
+  padding: 2rem 0;
+  background: repeating-linear-gradient(0.2deg,#888 0vw, #fbf4ea80 0.5vw, #f2dec080 9vw,#0003 10vw),
+  repeating-linear-gradient(90deg,#888 0vw, hsla(35, 68%, 80%, 0.502) 0.5vw, hsla(36, 66%, 95%, 0.502) 9vw,#0003 10vw),
+  radial-gradient(ellipse farthest-corner at 90% 10%,
+  #fffa, #fff3  10%, #1e90ff00 50%, #0007);
+    
+}
+.group-container{
+  padding: 1rem 1rem;
+  margin-bottom: 1rem;
+  background-color: #fff9;
+  box-shadow: 0 0 1rem #0002,inset 0 0 1rem #fffb;
+}
+.group-details-container{
+  height:0rem;
+  transition:400ms;
+  overflow: hidden;
+  opacity: 0;
+}
+.group-details-container-shown{
+  border-top: solid 1px #0006;
+  height:5rem;
+  opacity: 1;
+}
+
+
 .comment-section{
   background-color: #ffebcd;
 }

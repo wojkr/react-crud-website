@@ -1,13 +1,16 @@
 import { FiLogIn, FiLogOut } from "react-icons/fi"
 
-const LogInLink = ({ isLoggedIn, logInLinkClicked, user }) => {
+const LogInLink = ({ isLoggedIn, logInLinkClicked, user, setShowShowcase }) => {
+    const hideShowcase = () => {
+        setShowShowcase(false)
+    }
 
     return (
         <div className="flex-row">
             {isLoggedIn ?
-                <a className="flex-row" href="#user">{user.name}
+                <a className="flex-row" href="#user" onClick={hideShowcase}>{user.name}
                     <div className="user-avatar-container">
-                        <img className="user-avatar" src={user.avatar}></img>
+                        <img className="user-avatar" src={user.avatar} alt={(user.name) + "'s avatar"}></img>
                     </div>
                 </a> :
                 <p>Log in:</p>

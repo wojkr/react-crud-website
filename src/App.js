@@ -1,17 +1,18 @@
 import { useState, useEffect } from 'react'
 
 import Header from './components/Header/Header'
+import LogInForm from './components/LogInForm'
+import RegisterForm from './components/RegisterForm'
+import User from './components/User'
+import Groups from './components/Groups'
 import Showcase from './components/Showcase/Showcase'
 import About from './components/About'
+import Products from './components/Products/Products'
 import Projects from './components/Projects'
 import Contact from './components/Contact'
 import CommentSection from './components/CommentSection/CommentSection'
 import Footer from './components/Footer'
-import Products from './components/Products/Products'
-import LogInForm from './components/LogInForm'
-import RegisterForm from './components/RegisterForm'
 import { getData } from './components/utils/utils'
-import User from './components/User'
 import { userDataExample } from './components/userDataExample'
 
 const App = () => {
@@ -76,6 +77,7 @@ const App = () => {
         <User user={user} />
         <Products products={products} />
         <Projects />
+        <Groups />
         <Contact />
         <CommentSection isLoggedIn={isLoggedIn} setShowLogInForm={setShowLogInForm} />
         <Footer />
