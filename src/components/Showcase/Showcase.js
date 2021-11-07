@@ -51,7 +51,7 @@ const Showcase = ({ showShowcase, hideShowcase }) => {
                     )}
                 </div>
                 <div className="container" >
-                    <div className="flex-column flex-center">
+                    <div className="flex-column flex-center h-100">
                         <h1 className="showcase-title">#HUG<span className="showcase-title-small">A</span>MUG</h1>
                         <a href="#header" className="showcase-button" onClick={hideShowcase}><i>learn more</i></a>
                     </div>

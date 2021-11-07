@@ -5,7 +5,7 @@ const Alert = ({ alertInfo }) => {
             {/* <div className="container flex-column flex-center flex-a-center"> */}
             <div id="alert-title">
                 <h1>{message}</h1>
-                <div className="text-a-center">
+                <div className="text-center">
                     <button className="button-react-icon" onClick={option1func}><h2>{option1}</h2></button>
                     <button className="button-react-icon" onClick={option2func}><h2>{option2}</h2></button>
                 </div>

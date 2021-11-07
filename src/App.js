@@ -13,7 +13,6 @@ import Contact from './components/Contact'
 import CommentSection from './components/CommentSection/CommentSection'
 import Footer from './components/Footer'
 import { getData } from './components/utils/utils'
-import { userDataExample } from './components/userDataExample'
 
 const App = () => {
   //Projects to change name to comments is JSON as well
@@ -22,7 +21,11 @@ const App = () => {
   const [products, setProducts] = useState([])
   const [offset, setOffset] = useState(0)
   const [showShowcase, setShowShowcase] = useState(true)
-  const [user, setUser] = useState(userDataExample)
+  const [user, setUser] = useState('')
+
+  useState(() => {
+    getData('Users/123', setUser)
+  }, [])
 
   const [showLogInForm, setShowLogInForm] = useState(false)
   const [showRegisterForm, setShowRegisterForm] = useState(false)

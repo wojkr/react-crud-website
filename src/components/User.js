@@ -1,4 +1,5 @@
 import { FiEdit } from "react-icons/fi"
+import ProductSmall from "./ProductSmall"
 
 const User = ({ user }) => {
     return (
@@ -39,25 +40,22 @@ const User = ({ user }) => {
                         :
                         <li>Not Added Yet</li>
                     }
-                    <p className="user-border-light" >Favorite Drink: <a href={user.favoriteDrinkId}>{user.favoriteDrink}</a></p>
-                    <p>Favorite Cookies: <a href={user.favoriteCookieId}>{user.favoriteCookie}</a></p>
+                    <p className="user-border-light" >Favorite Drink: <a href={("/products/beverage/" + user.favoriteDrinkId)}>{user.favoriteDrink}</a></p>
+                    <p>Favorite Cookies: <a href={("/products/cookie/" + user.favoriteCookieId)}>{user.favoriteCookie}</a></p>
                 </div>
-                <div className="container grid-center">
-                    <div className="user-image-container ">
+                <div className="container-100 flex-column">
+                    <div className="user-image-container flex-grow">
                         <img className="user-image" src={user.img} alt={user.name}></img>
                     </div>
-                    <h1>favorite</h1>
-                    <div className="flex-row">
-                        <div>
-                            <h3>drink</h3>
-                        </div>
-                        <div>
+                    <div className="text-center">
+                        <h1>favorite</h1>
+                        <h3>Drink +Cookie</h3>
+                        <div className="flex-row flex-center">
+                            <ProductSmall id={user.favoriteDrinkId} />
                             <h3>+</h3>
+                            <ProductSmall id={user.favoriteCookieId} />
                         </div>
-                        <div>
-                            <h3>Cookie</h3>
-                        </div>
-
+                        <p>invite for favortie</p>
                     </div>
                     {/* name: 'cat',
                 isMember: false,
