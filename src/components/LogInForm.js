@@ -57,28 +57,24 @@ const LogInForm = ({ setIsLoggedIn, setShowLogInForm, setShowRegisterForm, setUs
     }
 
     return (
-        <>
-            <div className="full-page flex-column flex-center default-background">
-                <div className="comment-container">
-                    <h2>Log in:</h2>
-                    {wrongPassword && <p className="message-error">Incorrect Username or password</p>}
-                    <form onSubmit={onSubmit} className="flex-column">
-                        <div className="flex-column flex-a-start flex-grow">
-                            <label htmlFor="comment-form-user">Username or Email: </label>
-                            <input className="comment-form w-80" id="comment-form-user" type="text" value={username} placeholder="Username" onChange={(e) => setUsername(e.target.value)}></input>
-                        </div>
-                        <div className="flex-column flex-a-start flex-grow">
-                            <label htmlFor="comment-form-rating">Password: </label>
-                            <input className="comment-form w-80" id="comment-form-rating" type="password" value={password} placeholder="Password" onChange={(e) => setPassword(e.target.value)}></input>
-                        </div>
-                        <button className="button-react-icon button-block" type="submit"><FiSend className="react-icon" /></button>
-                    </form>
-                    <h3>If you dont have account, Sign in here: <button className="button-react-icon" onClick={goToRegisterForm}><FiFeather className="react-icon" /></button></h3>
-                </div>
-
+        <div className="full-page flex-column flex-center default-background">
+            <div className="default-box-container">
+                <h2>Log in:</h2>
+                {wrongPassword && <p className="message-error">Incorrect Username or password</p>}
+                <form onSubmit={onSubmit} className="flex-column">
+                    <div className="flex-column flex-a-start flex-grow">
+                        <label htmlFor="comment-form-user">Username or Email: </label>
+                        <input className="default-form w-80" id="comment-form-user" type="text" value={username} placeholder="Username" onChange={(e) => setUsername(e.target.value)}></input>
+                    </div>
+                    <div className="flex-column flex-a-start flex-grow">
+                        <label htmlFor="comment-form-rating">Password: </label>
+                        <input className="default-form w-80" id="comment-form-rating" type="password" value={password} placeholder="Password" onChange={(e) => setPassword(e.target.value)}></input>
+                    </div>
+                    <button className="button-react-icon button-block" type="submit"><FiSend className="react-icon" /></button>
+                </form>
+                <h3>If you dont have account, Sign in here: <button className="button-react-icon" onClick={goToRegisterForm}><FiFeather className="react-icon" /></button></h3>
             </div>
-
-        </>
+        </div>
     )
 }
 export default LogInForm

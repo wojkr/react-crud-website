@@ -20,7 +20,7 @@ const Comment = ({ editComment, deleteComment, comment, isLoggedIn }) => {
             </>)
         } else {
             return (
-                <div className="comment-container flex-column flex-a-start">
+                <div className="default-box-container flex-column flex-a-start">
                     <div className="container-100 flex-row comment-row-1">
                         <div className="container-100">
                             <h3 className="comment-user">{comment.user}</h3>
@@ -44,7 +44,7 @@ const Comment = ({ editComment, deleteComment, comment, isLoggedIn }) => {
                         </span>
                     </div>
                     <div className="comment-row-2 container-100 ">
-                        <p className="comment-text">{comment.text}</p>
+                        <p className="default-box-container-inner">{comment.text}</p>
                     </div>
                     <Votes comment={comment} editComment={editComment} isLoggedIn={isLoggedIn} />
                 </div >)

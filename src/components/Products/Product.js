@@ -11,15 +11,15 @@ const Product = ({ product }) => {
                     </div>
                     <p>{product.description}</p>
                     {product.info &&
-                        <ul className="border-light">
+                        <ul className="border-light list-circle">
                             {product.info && product.info.map((info) => (
-                                <li key={info} className="list-circle">{info}</li>
+                                <li key={info} >{info}</li>
                             ))}
                         </ul>}
                     <p className="border-light">Alergens: </p>
-                    <ul>
+                    <ul className="list-circle">
                         {product.alergens && product.alergens.map((alergen) => (
-                            <li key={alergen} className="list-circle">{alergen}</li>
+                            <li key={alergen}>{alergen}</li>
                         ))}
                     </ul>
                     <h3 className="border-light">Nutrition:</h3>

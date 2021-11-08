@@ -3,7 +3,7 @@ import { FiArrowUp, FiArrowDown } from "react-icons/fi"
 
 const Sort = ({ sort, commentsRef }) => {
     return (
-        <div id="sort" ref={commentsRef} className="sort-container" >
+        <div id="sort" ref={commentsRef} className="default-box-lighter-60" >
 
             <div className="flex-row" >
                 <h3>Sort:</h3>

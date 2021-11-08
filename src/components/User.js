@@ -1,4 +1,5 @@
 import { FiEdit } from "react-icons/fi"
+import LinkToGroup from "./LinkToGroup"
 import ProductSmall from "./ProductSmall"
 
 const User = ({ user }) => {
@@ -19,26 +20,30 @@ const User = ({ user }) => {
                     {user.groups ?
                         <div className="border-light">
                             <p>Group Member of </p>
-                            <ul>
-                                {user.groups.map((group) => (
-                                    <li key={group} className="list-circle">{group}</li>
+                            <ul className="list-circle">
+                                {user.groups.map((id) => (
+                                    <li key={id}><LinkToGroup id={id} /></li>
                                 ))}
                             </ul>
                         </div>
                         :
-                        <p className="border-light" >Did not join any Group yet</p>
+                        <ul className="border-light list-circle">
+                            <li>Did not join any Group yet</li>
+                        </ul>
                     }
                     <p className="border-light" >Hobby: </p>
                     {user.hobby ?
                         <>
-                            <ul>
+                            <ul className="list-circle">
                                 {user.hobby.map((hobby) => (
-                                    <li key={hobby} className="list-circle">{hobby}</li>
+                                    <li key={hobby}>{hobby}</li>
                                 ))}
                             </ul>
                         </>
                         :
-                        <li>Not Added Yet</li>
+                        <ul className="list-circle">
+                            <li>Not Added Yet</li>
+                        </ul>
                     }
                     <p className="border-light" >Favorite Drink: <a href={("#product-" + user.favoriteDrinkId)}>{user.favoriteDrink}</a></p>
                     <p>Favorite Cookies: <a href={("#product-" + user.favoriteCookieId)}>{user.favoriteCookie}</a></p>

@@ -5,12 +5,11 @@ const Group = ({ group }) => {
 
     const [showDescription, setShowDescription] = useState(false)
     const toggleDescription = () => {
-        console.log(showDescription)
         setShowDescription(!showDescription)
     }
 
     return (
-        <div className="group-container container-100 flex-column">
+        <div id={'group-' + group.id} className="group-container container-100 flex-column">
             <div className="container-100 flex-row">
                 <div>
                     <p>{group.name}</p>

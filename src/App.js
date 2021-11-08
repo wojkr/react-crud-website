@@ -5,6 +5,7 @@ import LogInForm from './components/LogInForm'
 import RegisterForm from './components/RegisterForm'
 import User from './components/User'
 import Groups from './components/Groups'
+import Join from './components/Join'
 import Showcase from './components/Showcase/Showcase'
 import About from './components/About'
 import Products from './components/Products/Products'
@@ -81,6 +82,7 @@ const App = () => {
         <Products products={products} />
         <Projects />
         <Groups />
+        <Join isLoggedIn={isLoggedIn} setShowRegisterForm={setShowRegisterForm} />
         <Contact />
         <CommentSection isLoggedIn={isLoggedIn} setShowLogInForm={setShowLogInForm} />
         <Footer />

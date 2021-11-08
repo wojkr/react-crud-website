@@ -49,21 +49,21 @@ const RegisterForm = ({ setShowRegisterForm, setShowLogInForm }) => {
     return (
         <>
             <div className="full-page flex-column flex-center default-background">
-                <div className="comment-container">
+                <div className="default-box-container">
                     <h2>Register:</h2>
                     {wrongData && <p className="message-error">{message}</p>}
                     <form onSubmit={onSubmit} className="flex-column">
                         <div className="flex-column flex-a-start flex-grow">
                             <label htmlFor="comment-form-user">Username: </label>
-                            <input className="comment-form w-80" id="comment-form-user" type="text" value={user} placeholder="Username" onChange={(e) => setUser(e.target.value)}></input>
+                            <input className="default-form w-80" id="comment-form-user" type="text" value={user} placeholder="Username" onChange={(e) => setUser(e.target.value)}></input>
                         </div>
                         <div className="flex-column flex-a-start flex-grow">
                             <label htmlFor="comment-form-rating">Email: </label>
-                            <input className="comment-form w-80" id="comment-form-rating" type="email" value={email} placeholder="Email Adress" onChange={(e) => setEmail(e.target.value)}></input>
+                            <input className="default-form w-80" id="comment-form-rating" type="email" value={email} placeholder="Email Adress" onChange={(e) => setEmail(e.target.value)}></input>
                         </div>
                         <div className="flex-column flex-a-start flex-grow">
                             <label htmlFor="comment-form-password">Password: </label>
-                            <input className="comment-form w-80" id="comment-form-password" type="password" value={password} placeholder="Password" onChange={(e) => setPassword(e.target.value)}></input>
+                            <input className="default-form w-80" id="comment-form-password" type="password" value={password} placeholder="Password" onChange={(e) => setPassword(e.target.value)}></input>
                         </div>
                         <button className="button-react-icon button-block" type="submit"><FiSend className="react-icon" /></button>
                     </form>
