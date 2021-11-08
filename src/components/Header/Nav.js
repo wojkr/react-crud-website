@@ -18,19 +18,19 @@ const Nav = ({ showNavbar, offset, setShowShowcase, setShowLogInForm, setShowReg
             <nav className={showNavbar ? "nav nav-shown" : "nav"}>
                 <ul className="nav-ul container flex-row flex-evenly">
                     <li>
-                        <a href="#Home" className="nav-item" onClick={onClickShowShowcase}>Home</a>
+                        <a href="/" className="class-link nav-item" onClick={onClickShowShowcase}>Home</a>
                     </li>
                     <li>
-                        <a href={offset > 100 ? '#about' : '#Home'} className="nav-item" onClick={onClickHideShowcase} >About</a>
+                        <a href="/#about" className="class-link nav-item" onClick={onClickHideShowcase}>About</a>
                     </li>
                     <li>
-                        <a href="#projects" className="nav-item" onClick={onClickHideShowcase}>Projects</a>
+                        <a href="/groups" className="class-link nav-item" onClick={onClickHideShowcase}>Groups</a>
                     </li>
                     <li>
-                        <a href="#contact" className="nav-item" onClick={onClickHideShowcase}>Contact</a>
+                        <a href="/#contact" className="class-link nav-item" onClick={onClickHideShowcase}>Contact</a>
                     </li>
                     <li>
-                        <a href="#comment-section" className="nav-item" onClick={onClickHideShowcase}>Reviews</a>
+                        <a href="/#comment-section" className="class-link nav-item" onClick={onClickHideShowcase}>Reviews</a>
                     </li>
                 </ul>
             </nav>

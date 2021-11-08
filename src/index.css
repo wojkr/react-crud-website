@@ -130,14 +130,25 @@ html{
   background-image: linear-gradient(#fffc, transparent 70%, #fffc 100%);
 }
 .full-page{
-  height: 90vh;
-  max-width: 100vw;
+  position: absolute; 
+  top:0;
+  left:0;
+  height: 100vh;
+  width: 100vw;
+  z-index: -1;
   overflow: hidden;
 }
 .hidden{
   /* max-width: 100vw;
   max-height: 100vh; */
   overflow: hidden;
+}
+.hide{
+  opacity:0;
+  transition: 1000ms;
+}
+.show{
+  opacity: 1;
 }
 .transition-400{
   transition: 400ms;
@@ -149,6 +160,16 @@ html{
   padding: 1rem 1rem;
   text-align: center;
   margin: 1rem 0;
+}
+
+.class-link{
+  cursor: pointer;
+  background-color: transparent;
+  text-decoration: none;
+  transition: 400ms;
+}
+.class-link:hover{
+  background-color: var(--light-blue-25);
 }
 .button-react-icon{
   margin: 0.2rem 0.2rem;
@@ -230,14 +251,17 @@ html{
   background: linear-gradient(#0002,transparent 3px);
 }
 .header{
-  z-index: 2;
+  width:100%
 }
 .header-main{
+  background-color: #fff;
   background-image: linear-gradient(#0002, #0000 50%);
   box-shadow: 0 0 1rem var(--dark-blue-70);
   height: 10vh;
 }
 .nav{
+  background-color: #fff;
+  background-image: linear-gradient(#0002, #0000 10%);
   overflow: hidden;
   height:0;
   transition: 400ms;
@@ -250,24 +274,10 @@ html{
   padding-inline-start: 0;
 }
 .nav-item{
-  cursor: pointer;
   padding: 1rem 2rem;
-  color: transparent;
-  text-decoration: none;
-  transition: 300ms;
-}
+  }
 .nav-shown li a{
   color: #000;
-}
-.hide{
-  opacity:0;
-  transition: 1000ms;
-}
-.show{
-  opacity: 1;
-}
-.nav-item:hover{
-  background-color: var(--light-blue-25);
 }
 .nav-button-scroll{
   position: fixed;
@@ -277,13 +287,17 @@ html{
   color:#000;
   text-decoration: none;
   background-color: var(--light-blue-60);
+  z-index: 1000;
 }
 #showcase{
-  height: 90vh;
-  max-width: 100vw;
+  position:fixed;
+  top:0;
+  left:0;
+  z-index: -1;
+  height: 100vh;
+  width: 100vw;
   transition: 500ms;
   overflow: hidden;
-  position: relative;
 }
 .showcase-title{
   font-size: 5rem;

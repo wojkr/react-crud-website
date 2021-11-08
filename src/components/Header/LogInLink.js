@@ -7,12 +7,12 @@ const LogInLink = ({ isLoggedIn, logInLinkClicked, user, setShowShowcase }) => {
 
     return (
         <div className="flex-row">
-            {isLoggedIn ?
-                <a className="flex-row" href="#user" onClick={hideShowcase}>{user.name}
-                    <div className="user-avatar-container">
-                        <img className="user-avatar" src={user.avatar} alt={(user.name) + "'s avatar"}></img>
-                    </div>
-                </a> :
+            {isLoggedIn ? <>
+                <a className="flex-row" href="#user" onClick={hideShowcase}>{user.name}</a>
+                <div className="user-avatar-container">
+                    <img className="user-avatar" src={user.avatar} alt={(user.name) + "'s avatar"}></img>
+                </div>
+            </> :
                 <p>Log in:</p>
             }
             <button id="header-login-button" className="button-react-icon" onClick={logInLinkClicked}>

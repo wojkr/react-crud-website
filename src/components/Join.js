@@ -1,7 +1,7 @@
 import { FiUserPlus } from "react-icons/fi"
 const Join = ({ isLoggedIn, setShowRegisterForm }) => {
     return (
-        <div className="full-page default-background">
+        <div id="join" className="full-page default-background">
             <div className="h-100 flex-column flex-center">
                 <div className="w-50">
                     <h1>Join us!</h1>
