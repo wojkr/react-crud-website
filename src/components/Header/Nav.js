@@ -21,16 +21,19 @@ const Nav = ({ showNavbar, offset, setShowShowcase, setShowLogInForm, setShowReg
                         <a href="/" className="class-link nav-item" onClick={onClickShowShowcase}>Home</a>
                     </li>
                     <li>
-                        <a href="/#about" className="class-link nav-item" onClick={onClickHideShowcase}>About</a>
+                        <a href="/about" className="class-link nav-item" onClick={onClickHideShowcase}>About</a>
                     </li>
                     <li>
                         <a href="/groups" className="class-link nav-item" onClick={onClickHideShowcase}>Groups</a>
                     </li>
                     <li>
-                        <a href="/#contact" className="class-link nav-item" onClick={onClickHideShowcase}>Contact</a>
+                        <a href="/products" className="class-link nav-item" onClick={onClickHideShowcase}>Products</a>
                     </li>
                     <li>
-                        <a href="/#comment-section" className="class-link nav-item" onClick={onClickHideShowcase}>Reviews</a>
+                        <a href="/about#contact" className="class-link nav-item" onClick={onClickHideShowcase}>Contact</a>
+                    </li>
+                    <li>
+                        <a href="/comments" className="class-link nav-item" onClick={onClickHideShowcase}>Comments</a>
                     </li>
                 </ul>
             </nav>

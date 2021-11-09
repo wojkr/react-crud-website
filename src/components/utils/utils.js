@@ -15,7 +15,8 @@ export const getData = async (dataName, setDataFunc) => {//wrap it in useCallbac
 }
 
 export const ALERT = (setShowAlertFunc, setAlertInfoFunc, message, option1_text, option1_func, option2_text, option2_func) => {
-    setShowAlertFunc(true);
+    // optionX_func [function, functionInput, URL to go]
+    setShowAlertFunc(true)
     setAlertInfoFunc([
         message,
         option1_text,
@@ -26,6 +27,9 @@ export const ALERT = (setShowAlertFunc, setAlertInfoFunc, message, option1_text,
                 option1_func[0]()
             }
             setShowAlertFunc(false)
+            if (option1_func[2]) {
+                window.location.href(option1_func[2])
+            }
         },
         option2_text,
         () => {
@@ -35,6 +39,9 @@ export const ALERT = (setShowAlertFunc, setAlertInfoFunc, message, option1_text,
                 option2_func()
             }
             setShowAlertFunc(false)
+            if (option2_func[2]) {
+                window.location.href = option2_func[2]
+            }
         }
     ])
 }

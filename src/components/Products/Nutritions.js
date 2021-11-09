@@ -12,7 +12,7 @@ const Nutritions = ({ nutritions, serving }) => {
 
     return (
         <>
-            <div className="flex-row">
+            <div id="product-nutritions" className="flex-row mt-1">
                 <div className="flex-column flex-a-start">
                     <strong>Typical Values</strong>
                     <br />
@@ -26,8 +26,8 @@ const Nutritions = ({ nutritions, serving }) => {
                     <p>Salt</p>
                 </div>
                 <div className="flex-column flex-a-end">
-                    <strong>per 100g</strong>
-                    <br />
+                    <p><strong>per</strong></p>
+                    <p><strong>100g</strong></p>
                     <p>{Math.floor((kcal100g * 4.15) + 0.5)}kJ</p>
                     <p>{kcal100g}kcal</p>
                     <p>{nutritions.fat}g</p>
@@ -38,8 +38,8 @@ const Nutritions = ({ nutritions, serving }) => {
                     <p>{nutritions.salt}g</p>
                 </div>
                 <div className="flex-column flex-a-end">
-                    <strong>per {serving}g</strong>
-                    <strong>serving</strong>
+                    <p><strong>per</strong></p>
+                    <p><strong>serving</strong></p>
                     <p>{Math.floor(kcal100g * 4.15 * perServing)}kJ</p>
                     <p>{Math.floor((kcal100g * perServing) + 0.5)}kcal</p>
                     <p>{toServing(nutritions.fat)}</p>
@@ -50,31 +50,6 @@ const Nutritions = ({ nutritions, serving }) => {
                     <p>{toServing(nutritions.salt)}</p>
                 </div>
             </div>
-
-            {/* 
-            <div className="flex-row">
-                <strong>Typical Values</strong>
-                <strong>per 100g</strong>
-                <strong>per {serving}g  </strong>
-            </div>
-
-            <div className="flex-row">
-                <p>Energy</p>
-                <div>
-                    <p>{Math.floor(nutritions.energykcal * 4.15)}kJ</p>
-                    <p>{nutritions.energykcal}kcal</p>
-                </div>
-                <div>
-                    <p>{Math.floor(nutritions.energykcal * 4.15 * perServing)}kJ</p>
-                    <p>{nutritions.energykcal * perServing}kcal</p>
-                </div>
-
-            </div>
-            <div className="flex-row">
-            </div>
-            <div className="flex-row">
-            </div> */}
-
         </>
     )
 }

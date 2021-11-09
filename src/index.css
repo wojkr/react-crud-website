@@ -94,9 +94,10 @@ html{
 }
 .w-100{
   width:100%;
+  box-sizing: border-box;
 }
 .w-80{
-  width:80%;
+  width:80% !important;
 }
 .w-50{
   width:50%;
@@ -110,6 +111,9 @@ html{
 .h-0{
   height: 0 !important;
 }
+.mt-1{
+  margin: 1rem;
+}
 .p-0{
   padding:0rem;
 }
@@ -121,6 +125,15 @@ html{
 }
 .p-3{
   padding:1rem;
+}
+.pt-10vh{
+  padding-top: 10vh;
+}
+.pr-2rem{
+  padding-right: 2rem ;
+}
+.box-sizing-border-box{
+  box-sizing: border-box;
 }
 .react-icon{
   font-size: large;
@@ -134,7 +147,8 @@ html{
   top:0;
   left:0;
   height: 100vh;
-  width: 100vw;
+  width: 100%;
+  max-width: 100vw;
   z-index: -1;
   overflow: hidden;
 }
@@ -164,6 +178,7 @@ html{
 
 .class-link{
   cursor: pointer;
+  color: #000;
   background-color: transparent;
   text-decoration: none;
   transition: 400ms;
@@ -175,6 +190,7 @@ html{
   margin: 0.2rem 0.2rem;
   border: none ;
   border-radius: 0.2rem;
+  color:#000;
   padding: 0.2rem 0.4rem;
   cursor: pointer;
   transition: 300ms;
@@ -419,13 +435,10 @@ html{
   box-shadow: inset 0 0 1rem #fff;
 }
 #groups{
-  margin-top: 1rem;
-  padding: 2rem 0;
   background: repeating-linear-gradient(0.2deg,#888 0vw, #fbf4ea80 0.5vw, #f2dec080 9vw,#0003 10vw),
   repeating-linear-gradient(90deg,#888 0vw, hsla(35, 68%, 80%, 0.502) 0.5vw, hsla(36, 66%, 95%, 0.502) 9vw,#0003 10vw),
   radial-gradient(ellipse farthest-corner at 90% 10%,
-  #fffa, #fff3  10%, #1e90ff00 50%, #0007);
-    
+  #fffa, #fff3  10%, #1e90ff00 50%, rgba(59, 49, 49, 0.467));
 }
 .group-container{
   padding: 1rem 1rem;

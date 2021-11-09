@@ -7,10 +7,9 @@ const Group = ({ group }) => {
     const toggleDescription = () => {
         setShowDescription(!showDescription)
     }
-
     return (
-        <div id={'group-' + group.id} className="group-container container-100 flex-column">
-            <div className="container-100 flex-row">
+        <div id={'group-' + group.id} className="group-container w-100 flex-column">
+            <div className="w-100 flex-row">
                 <div>
                     <p>{group.name}</p>
                     <p>{group.shortDescription}</p>

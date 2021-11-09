@@ -1,10 +1,20 @@
 import { FiEdit } from "react-icons/fi"
 import LinkToGroup from "./LinkToGroup"
 import ProductSmall from "./ProductSmall"
+import { useParams } from "react-router-dom"
+import { useEffect, useState } from "react"
+import { getData } from "./utils/utils"
 
-const User = ({ user }) => {
+const User = () => {
+    const [user, setUser] = useState('')
+    const { id } = useParams()
+
+    useEffect(() => {
+        getData(`Users/${id}`, setUser)
+    }, [id])
+
     return (
-        <div id="user" className="full-page default-background">
+        <div id="user" className="full-page default-background pt-10vh box-sizing-border-box">
             <div className="container flex-row flex-center">
                 <div className="w-40 container-100 flex-column flex-center flex-a-start" style={{ borderRight: 'solid 1px #fff' }}>
                     <div className="user-avatar-big-container">
@@ -14,7 +24,6 @@ const User = ({ user }) => {
                         <h1>{user.name}</h1>
                         <button className="button-react-icon"><FiEdit className="react-icon" /></button>
                     </div>
-                    <p>Bio: {user.bio}</p>
                     <p className="border-light" >Membership from {user.joined}</p>
                     <h4 className="border-light" >Birthday: {user.birthday}</h4>
                     {user.groups ?
@@ -45,16 +54,19 @@ const User = ({ user }) => {
                             <li>Not Added Yet</li>
                         </ul>
                     }
-                    <p className="border-light" >Favorite Drink: <a href={("#product-" + user.favoriteDrinkId)}>{user.favoriteDrink}</a></p>
-                    <p>Favorite Cookies: <a href={("#product-" + user.favoriteCookieId)}>{user.favoriteCookie}</a></p>
+                    <p className="border-light" >Favorite Drink: <a href={("/products/" + user.favoriteDrinkId)}>{user.favoriteDrink}</a></p>
+                    <p>Favorite Cookies: <a href={("/products/" + user.favoriteCookieId)}>{user.favoriteCookie}</a></p>
                 </div>
                 <div className="container-100 flex-column">
                     <div className="user-image-container flex-grow">
                         <img className="user-image" src={user.img} alt={user.name}></img>
                     </div>
+                    <p>Bio: {user.bio}</p>
                     <div className="text-center">
-                        <h1>favorite</h1>
-                        <h3>Drink +Cookie</h3>
+                        <div className="flex-row flex-center flex-a-baseline">
+                            <h1>favorite</h1>
+                            <h3>Drink +Cookie</h3>
+                        </div>
                         <div className="flex-row flex-center">
                             <ProductSmall id={user.favoriteDrinkId} />
                             <h3>+</h3>

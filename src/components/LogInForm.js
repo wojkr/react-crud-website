@@ -10,7 +10,7 @@ const LogInForm = ({ setIsLoggedIn, setShowLogInForm, setShowRegisterForm, setUs
         //testing UI perpouses
         if (username === 'cat' && password === '123') {
             return {
-                id: '0123',
+                id: '123',
                 name: 'cat',
                 birthday: '15feb',
                 bio: 'Im a fan of soft materials, warm milk. In spare time i sleep and puur...',
@@ -46,6 +46,7 @@ const LogInForm = ({ setIsLoggedIn, setShowLogInForm, setShowRegisterForm, setUs
             setUser(userData)
             setUsername('')
             setPassword('')
+            window.location.href = `/user/${userData.id}`
         } else {
             setWrongPassword(true)
         }
