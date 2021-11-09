@@ -3,31 +3,40 @@ import Branding from './Branding'
 import NavToggler from './NavToggler'
 import Nav from './Nav'
 import ScrollToNav from '../utils/ScrollToNav'
-import Alert from '../utils/Alert'
-import { ALERT } from '../utils/utils'
-import { useState } from 'react'
 
-const Header = ({ onClick, showNavbar, setShowShowcase, offset, isLoggedIn, setIsLoggedIn, showLogInForm, setShowLogInForm, setShowRegisterForm, user
-}) => {
+import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { getData } from "../utils/utils"
+import { ALERT } from '../utils/utils'
+import Alert from '../utils/Alert'
+
+const Header = ({ setShowShowcase, onClick, showNavbar, offset }) => {
+
+    const navigate = useNavigate()
+    const userId = window.sessionStorage.getItem('userId')
+
     const [showAlert, setShowAlert] = useState(false)
     const [alertInfo, setAlertInfo] = useState('')
+    const [user, setUser] = useState(null)
+
+    useEffect(() => {
+        getData(`Users`, setUser, userId)
+    }, [userId])
 
     const logOutFunc = () => {
-        setIsLoggedIn(false)
-        console.log('logOff Func here')
+        window.sessionStorage.clear()
+        // setIsLoggedIn(false)
     }
     const logInLinkClicked = () => {
-        if (!isLoggedIn && !showLogInForm) {
-            setShowLogInForm(true)
-            setShowRegisterForm(false)
-        }
-        if (isLoggedIn) {
+        if (!userId) {
+            navigate("/login")
+        } else {
             ALERT(
                 setShowAlert,
                 setAlertInfo,
                 "are you sure you want to log out?",
                 'Yes',
-                [logOutFunc],
+                [logOutFunc, null, navigate, '/'],
                 'no',
                 () => { }
             )
@@ -40,12 +49,12 @@ const Header = ({ onClick, showNavbar, setShowShowcase, offset, isLoggedIn, setI
                     <div className="container flex-row">
                         <Branding />
                         <div className="flex-row">
-                            <LogInLink user={user} isLoggedIn={isLoggedIn} logInLinkClicked={logInLinkClicked} setShowShowcase={setShowShowcase} />
+                            <LogInLink user={user} userId={userId} setShowShowcase={setShowShowcase} logInLinkClicked={logInLinkClicked} />
                             <NavToggler onClick={onClick} showNavbar={showNavbar} />
                         </div>
                     </div>
                 </div>
-                <Nav showNavbar={showNavbar} offset={offset} setShowShowcase={setShowShowcase} setShowLogInForm={setShowLogInForm} setShowRegisterForm={setShowRegisterForm} onClick={onClick} />
+                <Nav showNavbar={showNavbar} offset={offset} onClick={onClick} />
                 {offset > 500 && <ScrollToNav />}
             </div>
             {showAlert && <Alert alertInfo={alertInfo} />}

@@ -4,13 +4,14 @@ import ProductSmall from "./ProductSmall"
 import { useParams } from "react-router-dom"
 import { useEffect, useState } from "react"
 import { getData } from "./utils/utils"
+import { Link } from "react-router-dom"
 
 const User = () => {
     const [user, setUser] = useState('')
     const { id } = useParams()
 
     useEffect(() => {
-        getData(`Users/${id}`, setUser)
+        getData(`Users`, setUser, id)
     }, [id])
 
     return (
@@ -31,7 +32,7 @@ const User = () => {
                             <p>Group Member of </p>
                             <ul className="list-circle">
                                 {user.groups.map((id) => (
-                                    <li key={id}><LinkToGroup id={id} /></li>
+                                    <li ><LinkToGroup id={id} /></li>
                                 ))}
                             </ul>
                         </div>
@@ -54,8 +55,8 @@ const User = () => {
                             <li>Not Added Yet</li>
                         </ul>
                     }
-                    <p className="border-light" >Favorite Drink: <a href={("/products/" + user.favoriteDrinkId)}>{user.favoriteDrink}</a></p>
-                    <p>Favorite Cookies: <a href={("/products/" + user.favoriteCookieId)}>{user.favoriteCookie}</a></p>
+                    <p className="border-light" >Favorite Drink: <Link to={("/products/" + user.favoriteDrinkId)}>{user.favoriteDrink}</Link></p>
+                    <p>Favorite Cookies: <Link to={("/products/" + user.favoriteCookieId)}>{user.favoriteCookie}</Link></p>
                 </div>
                 <div className="container-100 flex-column">
                     <div className="user-image-container flex-grow">

@@ -269,6 +269,9 @@ html{
 .header{
   width:100%
 }
+.header:focus{
+  background-color:#f00;
+}
 .header-main{
   background-color: #fff;
   background-image: linear-gradient(#0002, #0000 50%);

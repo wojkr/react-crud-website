@@ -15,21 +15,21 @@ import Contact from './components/About/Contact'
 import CommentSection from './components/CommentSection/CommentSection'
 import Footer from './components/Footer'
 import { getData } from './components/utils/utils'
+import Events from './components/Events'
 
 const App = () => {
-  const [showNavbar, setShowNavbar] = useState(false)
+  const getUserId = () => {
+    let sessionUserId = window.sessionStorage.getItem('userId')
+    console.log('render: ', sessionUserId)
+    return sessionUserId ? sessionUserId : null
+  }
   const [offset, setOffset] = useState(0)
-  const [userId, setUserId] = useState('')
-  const [user, setUser] = useState('')
-  const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [userId, setUserId] = useState(getUserId())
+  const [isLoggedIn, setIsLoggedIn] = useState(userId === null ? false : true)
 
-  useState(() => {
-    getData(`Users/${userId}`, setUser)
-  }, [userId])
-  console.log(userId)
+  const [showNavbar, setShowNavbar] = useState(false)
   const [showShowcase, setShowShowcase] = useState(true)
-  const [showLogInForm, setShowLogInForm] = useState(true)
-  const [showRegisterForm, setShowRegisterForm] = useState(true)
+
 
   useEffect(() => {
     window.onscroll = () => {
@@ -48,11 +48,6 @@ const App = () => {
         setShowShowcase={setShowShowcase}
         showNavbar={showNavbar}
         offset={offset}
-        isLoggedIn={isLoggedIn}
-        setIsLoggedIn={setIsLoggedIn}
-        setShowLogInForm={setShowLogInForm}
-        setShowRegisterForm={setShowRegisterForm}
-        user={user}
       />
       <Routes>
         <Route path="/" element={
@@ -62,20 +57,16 @@ const App = () => {
           />
         } />
         <Route exact path="/user/:id" element={
-          <User user={user} />
+          <User />
         } />
         <Route exact path="/logIn" element={
           <LogInForm
+            isLoggedIn={isLoggedIn}
             setIsLoggedIn={setIsLoggedIn}
-            setShowLogInForm={setShowLogInForm}
-            setShowRegisterForm={setShowRegisterForm}
-            setUser={setUserId}
           />
         } />
         <Route exact path="/register" element={
           <RegisterForm
-            setShowLogInForm={setShowLogInForm}
-            setShowRegisterForm={setShowRegisterForm}
           />
         } />
         <Route exact path="/about" element={
@@ -87,15 +78,18 @@ const App = () => {
           </>
         } />
         <Route exact path="/comments" element={
-          <CommentSection isLoggedIn={isLoggedIn} setShowLogInForm={setShowLogInForm} />
+          <CommentSection isLoggedIn={isLoggedIn} />
         } />
         <Route exact path="/join" element={
-          <Join isLoggedIn={isLoggedIn} setShowRegisterForm={setShowRegisterForm} />
+          <Join isLoggedIn={isLoggedIn} />
         } />
 
         <Route exact path="/groups" element={
           <Groups />
         } />
+        <Route exact path="/Events" element={<Events />}>
+          <Route path=":id" element={<Events />} />
+        </Route>
         <Route path="/products" element={<Products />}>
           <Route path=":id" element={<Products />} />
         </Route>

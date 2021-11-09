@@ -5,10 +5,10 @@ const LinkToGroup = ({ id }) => {
     const [group, setGroup] = useState({})
 
     useEffect(() => {
-        getData(`Groups/${id}`, setGroup)
-    }, [])
+        getData(`Groups`, setGroup, id)
+    }, [id])
     return (
-        <a href={'#group-' + id}>{group.name}</a>
+        <a href={'/groups#group-' + id}>{group.name}</a>
     )
 }
 export default LinkToGroup

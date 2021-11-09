@@ -1,5 +1,6 @@
-import Image from "./Image"
 import { useState, useEffect } from "react"
+import { Link } from "react-router-dom"
+import Image from "./Image"
 import { getData } from "../utils/utils"
 
 const Showcase = ({ showShowcase, hideShowcase }) => {
@@ -15,9 +16,9 @@ const Showcase = ({ showShowcase, hideShowcase }) => {
     const [imgsState, setImgsState] = useState(initialImgsState)
 
     const resetImgsState = () => {
-        console.log('bReset', imgsState)
+        // console.log('bReset', imgsState)
         setImgsState(initialImgsState)
-        console.log('aRestet', imgsState)
+        // console.log('aRestet', imgsState)
     }
 
     const updateImgsState = (state) => {
@@ -53,7 +54,7 @@ const Showcase = ({ showShowcase, hideShowcase }) => {
                 <div className="container" >
                     <div className="flex-column flex-center h-100">
                         <h1 className="showcase-title">#HUG<span className="showcase-title-small">A</span>MUG</h1>
-                        <a href="/about" className="showcase-button" onClick={hideShowcase}><i>learn more</i></a>
+                        <Link to="/about" className="class-link showcase-button" onClick={hideShowcase}><i>learn more</i></Link>
                     </div>
                 </div>
             </div>

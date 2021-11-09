@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom"
 const Nav = ({ showNavbar, offset, setShowShowcase, setShowLogInForm, setShowRegisterForm, onClick }) => {
     const hideForms = () => {
         onClick()
@@ -18,22 +19,22 @@ const Nav = ({ showNavbar, offset, setShowShowcase, setShowLogInForm, setShowReg
             <nav className={showNavbar ? "nav nav-shown" : "nav"}>
                 <ul className="nav-ul container flex-row flex-evenly">
                     <li>
-                        <a href="/" className="class-link nav-item" onClick={onClickShowShowcase}>Home</a>
+                        <NavLink to="/" className="class-link nav-item" onClick={onClickShowShowcase}>Home</NavLink>
                     </li>
                     <li>
-                        <a href="/about" className="class-link nav-item" onClick={onClickHideShowcase}>About</a>
+                        <NavLink to="/about" className="class-link nav-item" onClick={onClickHideShowcase}>About</NavLink>
                     </li>
                     <li>
-                        <a href="/groups" className="class-link nav-item" onClick={onClickHideShowcase}>Groups</a>
+                        <NavLink to="/groups" className="class-link nav-item" onClick={onClickHideShowcase}>Groups</NavLink>
                     </li>
                     <li>
-                        <a href="/products" className="class-link nav-item" onClick={onClickHideShowcase}>Products</a>
+                        <NavLink to="/products" className="class-link nav-item" onClick={onClickHideShowcase}>Products</NavLink>
                     </li>
                     <li>
-                        <a href="/about#contact" className="class-link nav-item" onClick={onClickHideShowcase}>Contact</a>
+                        <NavLink to="/about#contact" className="class-link nav-item" onClick={onClickHideShowcase}>Contact</NavLink>
                     </li>
                     <li>
-                        <a href="/comments" className="class-link nav-item" onClick={onClickHideShowcase}>Comments</a>
+                        <NavLink to="/comments" className="class-link nav-item" onClick={onClickHideShowcase}>Comments</NavLink>
                     </li>
                 </ul>
             </nav>

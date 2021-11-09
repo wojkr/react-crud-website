@@ -14,7 +14,7 @@ const Products = () => {
     }
 
     useEffect(() => {
-        getData(`Products${id}`, setProducts)
+        getData(`Products`, setProducts, id)
     }, [id])
 
     return (

@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { Link } from "react-router-dom"
 import GroupToggler from "./GroupToggler"
 
 const Group = ({ group }) => {
@@ -19,6 +20,7 @@ const Group = ({ group }) => {
             <div className={!showDescription ? "container-100 flex-row group-details-container" : "container-100 flex-row group-details-container group-details-container-shown "}>
                 <div className="w-80">
                     <p>{group.description}</p>
+                    <Link to={("/Events/" + group.id)}>show events</Link>
                     <p>{group.membersId}</p>
                     <p>Membership monthly cost: £{group.cost}</p>
                 </div>

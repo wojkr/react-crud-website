@@ -6,7 +6,7 @@ const ProductSmall = ({ id }) => {
     const [product, setProduct] = useState({})
 
     useEffect(() => {
-        getData(`Products/${id}`, setProduct)
+        getData(`Products`, setProduct, id)
     }, [id])
 
     return (

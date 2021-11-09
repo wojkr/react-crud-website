@@ -1,22 +1,23 @@
+import { Link } from "react-router-dom"
 import { FiLogIn, FiLogOut } from "react-icons/fi"
 
-const LogInLink = ({ isLoggedIn, logInLinkClicked, user, setShowShowcase }) => {
+const LogInLink = ({ user, userId, logInLinkClicked, setShowShowcase }) => {
     const hideShowcase = () => {
         setShowShowcase(false)
     }
-
+    console.log(userId, user)
     return (
         <div className="flex-row">
-            {isLoggedIn ?
-                <a className="flex-row" href={"/user/" + user.id} onClick={hideShowcase}>{user.name}
+            {userId !== null && user !== null ?
+                <Link className="flex-row class-link" to={"/user/" + user.id} onClick={hideShowcase}>{user.name}
                     <div className="user-avatar-container">
                         <img className="user-avatar" src={user.avatar} alt={(user.name) + "'s avatar"}></img>
                     </div>
-                </a> :
+                </Link> :
                 <p>Log in:</p>
             }
             <button id="header-login-button" className="button-react-icon" onClick={logInLinkClicked}>
-                {isLoggedIn ? <FiLogOut className="react-icon" /> : <FiLogIn className="react-icon" />}
+                {userId !== null && user !== null ? <FiLogOut className="react-icon" /> : <FiLogIn className="react-icon" />}
             </button>
         </div>
     )

@@ -1,7 +1,8 @@
 import { useState } from "react"
+import { Link } from "react-router-dom"
 import { FiSend, FiLogIn } from "react-icons/fi"
 import { checkUsername, checkEmail, checkPassword } from "./utils/utils"
-const RegisterForm = ({ setShowRegisterForm, setShowLogInForm }) => {
+const RegisterForm = () => {
 
     const [user, setUser] = useState('')
     const [email, setEmail] = useState('')
@@ -25,8 +26,6 @@ const RegisterForm = ({ setShowRegisterForm, setShowLogInForm }) => {
         const correctData = isInputOk();
         if (correctData) {
             saveUser(user, email, password)
-            setShowRegisterForm(false)
-            setShowLogInForm(true)
             alert('register successfully, pls check your email')
             setUser('')
             setPassword('')
@@ -39,11 +38,6 @@ const RegisterForm = ({ setShowRegisterForm, setShowLogInForm }) => {
     const onSubmit = (e) => {
         e.preventDefault()
         checkForm(user, email, password)
-    }
-
-    const goToLogInForm = () => {
-        setShowRegisterForm(false)
-        setShowLogInForm(true)
     }
 
     return (
@@ -67,7 +61,7 @@ const RegisterForm = ({ setShowRegisterForm, setShowLogInForm }) => {
                         </div>
                         <button className="button-react-icon button-block" type="submit"><FiSend className="react-icon" /></button>
                     </form>
-                    <h3>If you have account already, log in here: <button className="button-react-icon" onClick={goToLogInForm}><FiLogIn className="react-icon" /></button></h3>
+                    <h3>If you have account already, log in here: <Link to="/login" className="button-react-icon"><FiLogIn className="react-icon" /></Link></h3>
                 </div>
 
             </div>

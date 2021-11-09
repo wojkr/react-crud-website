@@ -5,7 +5,6 @@ const Product = ({ product, details }) => {
     const [showDetails, setShowDetails] = useState(details)
     const [fullPageMode, setFullPageMode] = useState(false)
     const { id } = useParams()
-    console.log(id === product.id)
     if (id === `${product.id}`) {
         if (fullPageMode !== true) {
             setShowDetails(true)
