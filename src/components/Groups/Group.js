@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { Link } from "react-router-dom"
 import GroupToggler from "./GroupToggler"
+import UserIcon from "../UserIcon"
 
 const Group = ({ group }) => {
 
@@ -21,7 +22,12 @@ const Group = ({ group }) => {
                 <div className="w-80">
                     <p>{group.description}</p>
                     <Link to={("/Events/" + group.id)}>show events</Link>
-                    <p>{group.membersId}</p>
+                    <div className="flex-row flex-start">
+                        <h3>Members: </h3>
+                        {group.membersId && <>
+                            {group.membersId.map((g) => <UserIcon key={g} userId={g} />)}
+                        </>}
+                    </div>
                     <p>Membership monthly cost: £{group.cost}</p>
                 </div>
                 <div className="w-40">

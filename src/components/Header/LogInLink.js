@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom"
 import { FiLogIn, FiLogOut } from "react-icons/fi"
+import UserIcon from "../UserIcon"
 
 const LogInLink = ({ user, userId, logInLinkClicked, setShowShowcase }) => {
     const hideShowcase = () => {
@@ -9,11 +10,11 @@ const LogInLink = ({ user, userId, logInLinkClicked, setShowShowcase }) => {
     return (
         <div className="flex-row">
             {userId !== null && user !== null ?
-                <Link className="flex-row class-link" to={"/user/" + user.id} onClick={hideShowcase}>{user.name}
-                    <div className="user-avatar-container">
-                        <img className="user-avatar" src={user.avatar} alt={(user.name) + "'s avatar"}></img>
-                    </div>
-                </Link> :
+                <>
+                    <Link className="flex-row class-link" to={"/user/" + user.id} onClick={hideShowcase}>{user.name}</Link>
+                    <UserIcon userId={userId} />
+                </>
+                :
                 <p>Log in:</p>
             }
             <button id="header-login-button" className="button-react-icon" onClick={logInLinkClicked}>

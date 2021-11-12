@@ -1,14 +1,15 @@
 import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import GroupToggler from "./Groups/GroupToggler"
+import UserIcon from "./UserIcon"
 import { getData } from "./utils/utils"
 const Event = ({ event }) => {
-    const [group, setGroupName] = useState('')
+    const [group, setGroup] = useState('')
 
     useEffect(() => {
-        getData('Groups', setGroupName, event.groupId)
+        getData('Groups', setGroup, event.groupId)
     }, [event.groupId])
-    // console.log(groupName)
+
     const [showDescription, setShowDescription] = useState(false)
     const toggleDescription = () => {
         setShowDescription(!showDescription)
@@ -24,18 +25,27 @@ const Event = ({ event }) => {
             </div>
             <div className={!showDescription ? "container-100 flex-row group-details-container" : "container-100 flex-row group-details-container group-details-container-shown "}>
                 <div className="w-80">
+                    <h3>Event description</h3>
                     <p>{event.description}</p>
-                    {event.links && <>
-                        {event.links.map((link) => <Link to={link.url}>{link.text}</Link>)}
-                    </>}
-                    <p>{event.going}</p>
+                    <div className="flex-row flex-start">
+                        <h3>Links</h3>
+                        {event.links && <>
+                            {event.links.map((link) => <Link to={link.url} key={link.url}>{link.text}</Link>)}
+                        </>}
+                    </div>
+                    <div className="flex-row flex-start">
+                        <h3>Going</h3>
+                        {event.links && <>
+                            {event.going.map((g) => <UserIcon key={g} userId={g} />)}
+                        </>}
+                    </div>
                 </div>
                 <div className="w-40">
                     {event.onlyMembers && <>
                         <p>only for members</p>
                     </>}
                     <p>{event.ticket ? ("ticket: £" + event.cost) : "free"} </p>
-                    {event.group && <p><Link className="class-link button-react-icon" to={'/Groups#' + group.id}>show group</Link></p>}
+                    {event.group && <p><Link className="class-link button-react-icon" to={'/Groups/' + group.id}>show group</Link></p>}
                 </div>
             </div>
         </div >

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { Link } from "react-router-dom"
 import { getData } from "./utils/utils"
 
 const ProductSmall = ({ id }) => {
@@ -11,8 +12,10 @@ const ProductSmall = ({ id }) => {
 
     return (
         <div className="product-small-container container-100 flex-column flex-center">
-            <h4>{product.name}</h4>
-            <img className="product-small-img" src={product.img} alt={product.name}></img>
+            <Link to={"/products/" + id} className="class-link">
+                <h4>{product.name}</h4>
+                <img className="product-small-img" src={product.img} alt={product.name}></img>
+            </Link>
         </div>
     )
 }

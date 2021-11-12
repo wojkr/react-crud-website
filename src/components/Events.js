@@ -2,20 +2,18 @@ import { useEffect, useState } from "react"
 import { getData } from "./utils/utils"
 import Event from "./Event"
 import { useParams } from "react-router"
+import { Link } from "react-router-dom"
 
 const Events = () => {
     const { id } = useParams()
-    const [allEvents, setAllEvents] = useState('')
-    // const [events, setEvents] = useState('')
-
+    const [allEvents, setAllEvents] = useState([])
+    let events = []
+    let titleText = ''
     useEffect(() => {
         getData('Events', setAllEvents)
     }, [])
-    let events = 0
-    // console.log(id, allEvents)
-    // events = allEvents
-    if (id) {
-        if (allEvents.length > 1) events = allEvents.filter((e) => e.groupId === id)
+    if (id && allEvents) {
+        events = allEvents.filter((e) => e.groupId && e.groupId.toString() === id)
     } else {
         events = allEvents
     }
@@ -23,9 +21,9 @@ const Events = () => {
     return (<>
         <div id="events" className="container-100 full-page pt-10vh box-sizing-border-box ">
             <div className="container">
-
-                <h1>List of Events</h1>
+                {events ? <h1>List of Events</h1> : <h1>No upcoming events</h1>}
                 {events && events.map((event) => <Event key={event.id} event={event} />)}
+                {id && <Link to="/Events" className="class-link button-react-icon" >Show All Events</Link>}
             </div>
         </div>
     </>)

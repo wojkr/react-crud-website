@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { Link } from "react-router-dom"
 import { getData } from "./utils/utils"
 
 const LinkToGroup = ({ id }) => {
@@ -8,7 +9,7 @@ const LinkToGroup = ({ id }) => {
         getData(`Groups`, setGroup, id)
     }, [id])
     return (
-        <a href={'/groups#group-' + id}>{group.name}</a>
+        <Link to={'/groups/' + id}>{group.name}</Link>
     )
 }
 export default LinkToGroup

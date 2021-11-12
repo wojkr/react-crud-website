@@ -77,20 +77,23 @@ const App = () => {
             <Footer />
           </>
         } />
-        <Route exact path="/comments" element={
+        <Route exact path="/Comments" element={
           <CommentSection isLoggedIn={isLoggedIn} />
         } />
-        <Route exact path="/join" element={
+        <Route exact path="/Join" element={
           <Join isLoggedIn={isLoggedIn} />
         } />
 
-        <Route exact path="/groups" element={
+        {/* <Route exact path="/groups" element={
           <Groups />
-        } />
+        } /> */}
+        <Route exact path="/Groups" element={<Groups />}>
+          <Route path=":id" element={<Groups />} />
+        </Route>
         <Route exact path="/Events" element={<Events />}>
           <Route path=":id" element={<Events />} />
         </Route>
-        <Route path="/products" element={<Products />}>
+        <Route path="/Products" element={<Products />}>
           <Route path=":id" element={<Products />} />
         </Route>
       </Routes>
