@@ -131,10 +131,19 @@ const CommentSection = ({ isLoggedIn }) => {
                 <div className="container">
                     <h1>CommentSection!</h1>
 
-                    {isLoggedIn ? <HeaderCom
-                        addComment={COMMENTS.add}
-                    />
-                        : <h3><Link to="/login" className="button-react-icon"><FiLogIn className="react-icon" /></Link>Log in if you want to add review.</h3>}
+                    {isLoggedIn ?
+                        <HeaderCom
+                            addComment={COMMENTS.add}
+                        />
+                        :
+                        <h3>
+                            <Link to="/login" className="button-react-icon">
+                                <FiLogIn className="react-icon" />
+                            </Link>
+                            Log in if you want to add review.
+                        </h3>
+                    }
+                    <p>{comments.length} comments...</p>
                     <Sort
                         commentsRef={commentsRef}
                         sort={COMMENTS.sort}

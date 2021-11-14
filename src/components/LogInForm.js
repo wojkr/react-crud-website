@@ -29,9 +29,8 @@ const LogInForm = ({ setIsLoggedIn }) => {
             setUsername('')
             setPassword('')
             window.sessionStorage.setItem('userId', userData.id)
-            navigate('/about')
             setIsLoggedIn(true)
-            // window.location.href = history.location.pathname
+            navigate(-1)
         } else {
             setWrongPassword(true)
         }

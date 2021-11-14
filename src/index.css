@@ -171,12 +171,16 @@ html{
   transition: 400ms;
 }
 
-.message-error{
+.message-error,.message-success{
   box-shadow: inset 0 0 1rem #f00;
   background-color: #f009;
   padding: 1rem 1rem;
   text-align: center;
   margin: 1rem 0;
+}
+.message-success{
+  box-shadow: inset 0 0 1rem #070;
+  background-color: #0709;
 }
 
 .class-link{
@@ -475,7 +479,7 @@ html{
 /* .comment-form, */
 .default-form{
   border: none;
-  margin: 0.4rem 0.4rem;
+  margin: 0.4rem 0;
   padding: 0.4rem 0.4rem;
   border-radius: 0.4rem;
   box-shadow: 0 0 1rem #0032;

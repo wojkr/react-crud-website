@@ -1,10 +1,19 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { FiSend, FiPlus, FiMinus } from "react-icons/fi"
+import { Link } from "react-router-dom"
+import UserIcon from "../UserIcon"
+import { getData } from "../utils/utils"
 
 const AddComment = ({ addComment }) => {
+    const [showCommentForm, setShowCommentForm] = useState(false)
     const [user, setUser] = useState('')
     const [text, setText] = useState('')
     const [rating, setRating] = useState(3)
+    const userId = window.sessionStorage.getItem('userId')
+
+    useEffect(() => {
+        getData('Users', setUser, userId)
+    }, [userId])
 
     const ratingPlus = () => {
         if (rating < 5) {
@@ -20,13 +29,14 @@ const AddComment = ({ addComment }) => {
 
         e.preventDefault()
         const date = Date.now()
+        let userName = user.name
         // const date = new Date(Date.now()).toDateString()
 
         if (!user) {
             alert('please add username')
 
         } else {
-            addComment({ user, text, rating, date, votes: 0 })
+            addComment({ userId, userName, text, rating, date, votes: 0 })
             setUser('')
             setText('')
             setRating(3)
@@ -34,12 +44,26 @@ const AddComment = ({ addComment }) => {
     }
 
     return (
-        <div className="container">
-            <form onSubmit={onSubmit} className="flex-column">
+        <div className=" default-box-container">
+            <div className="flex-row">
+                <h3>Add a comment...</h3>
+                <button
+                    className="button-react-icon"
+                    onClick={() => setShowCommentForm(!showCommentForm)}
+                >
+                    {showCommentForm ?
+                        <FiMinus className="react-icon" />
+                        :
+                        <FiPlus className="react-icon" />
+                    }
+                </button>
+            </div>
+
+            {showCommentForm && <form onSubmit={onSubmit} className="flex-column">
                 <div className="container-100 flex-row flex-evenly">
-                    <div className="flex-column flex-a-start flex-grow">
-                        <label htmlFor="comment-form-user">Username: </label>
-                        <input className="default-form w-80" id="comment-form-user" type="text" value={user} placeholder="username" onChange={(e) => setUser(e.target.value)}></input>
+                    <div className="flex-row flex-start flex-grow">
+                        <Link to={"/User/" + userId}>{user.name}</Link>
+                        <UserIcon userId={userId} />
                     </div>
                     <div className="flex-column flex-a-start flex-grow">
                         <label htmlFor="comment-form-rating">Rating: </label>
@@ -56,8 +80,7 @@ const AddComment = ({ addComment }) => {
                     <textarea className="default-form comment-form-text flex-grow w-100" id="comment-form-text" type="text" value={text} placeholder="text" onChange={(e) => setText(e.target.value)}></textarea>
                 </div>
                 <button className="button-react-icon button-block" type="submit"><FiSend className="react-icon" /></button>
-            </form>
-
+            </form>}
         </div>
     )
 }
