@@ -2,7 +2,17 @@ import { useState } from "react"
 import { Link } from "react-router-dom"
 import { FiSend, FiLogIn } from "react-icons/fi"
 import { checkUsername, checkEmail, checkPassword } from "./utils/utils"
+import Userfront from "@userfront/react"
+import UserfrontKEY from "./Userfront"
+
 const RegisterForm = () => {
+
+    Userfront.init(UserfrontKEY.INIT)
+
+    const SignupForm = Userfront.build({
+        toolId: "odkkol"
+    })
+
 
     const [user, setUser] = useState('')
     const [email, setEmail] = useState('')
@@ -44,7 +54,7 @@ const RegisterForm = () => {
         <>
             <div className="full-page flex-column flex-center default-background">
                 <div className="default-box-container">
-                    <h2>Register:</h2>
+                    {/* <h2>Register:</h2>
                     {wrongData && <p className="message-error">{message}</p>}
                     <form onSubmit={onSubmit} className="flex-column">
                         <div className="flex-column flex-a-start flex-grow">
@@ -60,7 +70,8 @@ const RegisterForm = () => {
                             <input className="default-form w-80" id="comment-form-password" type="password" value={password} placeholder="Password" onChange={(e) => setPassword(e.target.value)}></input>
                         </div>
                         <button className="button-react-icon button-block" type="submit"><FiSend className="react-icon" /></button>
-                    </form>
+                    </form> */}
+                    <SignupForm />
                     <h3>If you have account already, log in here: <Link to="/login" className="button-react-icon"><FiLogIn className="react-icon" /></Link></h3>
                 </div>
 

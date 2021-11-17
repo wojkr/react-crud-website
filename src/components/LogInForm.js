@@ -1,7 +1,16 @@
 import { useState } from "react"
 import { useNavigate, Link } from "react-router-dom"
 import { FiSend, FiFeather } from "react-icons/fi"
+import Userfront from "@userfront/react"
+import UserfrontKEY from "./Userfront"
 const LogInForm = ({ setIsLoggedIn }) => {
+
+    Userfront.init(UserfrontKEY.INIT)
+
+    const LoginForm = Userfront.build({
+        toolId: "armmkl"
+    })
+
     const navigate = useNavigate();
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
@@ -40,8 +49,8 @@ const LogInForm = ({ setIsLoggedIn }) => {
         <div className="full-page flex-column flex-center default-background">
             <div className="default-box-container">
                 <h2>Log in:</h2>
-                {wrongPassword && <p className="message-error">Incorrect Username or password</p>}
-                <form onSubmit={onSubmit} className="flex-column">
+                {/* {wrongPassword && <p className="message-error">Incorrect Username or password</p>} */}
+                {/* <form onSubmit={onSubmit} className="flex-column">
                     <div className="flex-column flex-a-start flex-grow">
                         <label htmlFor="comment-form-user">Username or Email: </label>
                         <input className="default-form w-80" id="comment-form-user" type="text" value={username} placeholder="Username" onChange={(e) => setUsername(e.target.value)}></input>
@@ -51,7 +60,8 @@ const LogInForm = ({ setIsLoggedIn }) => {
                         <input className="default-form w-80" id="comment-form-rating" type="password" value={password} placeholder="Password" onChange={(e) => setPassword(e.target.value)}></input>
                     </div>
                     <button className="button-react-icon button-block" type="submit"><FiSend className="react-icon" /></button>
-                </form>
+                </form> */}
+                <LoginForm />
                 <h3>If you dont have account, Sign in here: <Link to="/register"> <button className="button-react-icon"><FiFeather className="react-icon" /></button></Link></h3>
             </div>
         </div>

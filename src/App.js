@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import Userfront from "@userfront/react";
 
 import Header from './components/Header/Header'
 import LogInForm from './components/LogInForm'
@@ -16,8 +17,9 @@ import CommentSection from './components/CommentSection/CommentSection'
 import Footer from './components/Footer'
 import { getData } from './components/utils/utils'
 import Events from './components/Events'
-
+import UserfrontKEY from "./Userfront"
 const App = () => {
+  Userfront.init(UserfrontKEY.INIT)
   const getUserId = () => {
     let sessionUserId = window.sessionStorage.getItem('userId')
     console.log('render: ', sessionUserId)
@@ -25,10 +27,23 @@ const App = () => {
   }
   const [offset, setOffset] = useState(0)
   const [userId, setUserId] = useState(getUserId())
-  const [isLoggedIn, setIsLoggedIn] = useState(userId === null ? false : true)
+  // const [isLoggedIn, setIsLoggedIn] = useState(userId === null ? false : true)
+  const [isLoggedIn, setIsLoggedIn] = useState(Userfront.accessToken() && true)
 
+  console.log(isLoggedIn)
   const [showNavbar, setShowNavbar] = useState(false)
   const [showShowcase, setShowShowcase] = useState(true)
+
+
+
+  const PasswordResetForm = Userfront.build({
+    toolId: "brnnkk"
+  })
+  // class Demo extends React.Component {
+  //   render () {
+  //     return <LogoutButton />
+  //   }
+  // }
 
 
   useEffect(() => {
@@ -56,20 +71,29 @@ const App = () => {
             hideShowcase={() => setShowShowcase(!showShowcase)}
           />
         } />
-        <Route exact path="/user/:id" element={
+        <Route exact path="/User/:id" element={
           <User />
         } />
-        <Route exact path="/logIn" element={
+        <Route exact path="/Login" element={
           <LogInForm
             isLoggedIn={isLoggedIn}
             setIsLoggedIn={setIsLoggedIn}
           />
+          // <LoginForm />
         } />
-        <Route exact path="/register" element={
+        <Route exact path="/Register" element={
           <RegisterForm
           />
         } />
-        <Route exact path="/about" element={
+        {/* <Route exact path="/signup" element={
+          <SignupForm
+          />
+        } /> */}
+        <Route exact path="/reset" element={
+          <PasswordResetForm
+          />
+        } />
+        <Route exact path="/About" element={
           <>
             <About />
             <Projects />
