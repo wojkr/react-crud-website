@@ -2,28 +2,38 @@ import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import { FiLogIn, FiLogOut } from "react-icons/fi"
 import Userfront from "@userfront/react"
-import UserfrontKEY from "../../Userfront"
+import UserfrontCore from "@userfront/core"
+// import UserfrontKEY from "../../Userfront"
 import UserIcon from "../UserIcon"
 require('dotenv').config()
 
 
-const LogInLink = ({ user, userId, logInLinkClicked, setShowShowcase }) => {
+const LogInLink = ({ logInLinkClicked, setShowShowcase }) => {
 
-    const [userData, setUserData] = useState(Userfront.user)
+    Userfront.init(process.env.REACT_APP_KEY_USERFRONT_INIT)
 
+    const [userData, setUserData] = useState((Userfront.accessToken() && Userfront.user) || null)
+    const [user, setUser] = useState(Userfront.accessToken() && Userfront.user.name)
+    const [userId, setUserId] = useState(Userfront.accessToken() && Userfront.user.userId)
+    console.log(userData)
     const hideShowcase = () => {
         setShowShowcase(false)
     }
 
     // Userfront.init(UserfrontKEY.INIT)
-    Userfront.init(process.env.KEY_USERFRONT_INIT)
-    const LogoutButton = Userfront.build({//https://userfront.com/guide/toolkit/build-logout-button-react.html  BUILD OWN ONE!
-        toolId: "rorrdb"
-    })
+    // const LogoutButton = Userfront.build({//https://userfront.com/guide/toolkit/build-logout-button-react.html  BUILD OWN ONE!
+    //     toolId: "rorrdb"
+    // })
     console.log('stopped here, get the data from userfront to display, and customise the button')
-    user = userData.name
-    userId = userData.userId
 
+    const customBtnClicked = () => {
+        if (Userfront.accessToken()) {
+            UserfrontCore.logout()
+            setUserData()
+        }
+        logInLinkClicked()
+    }
+    console.log(userData)
     return (
         <div className="flex-row">
             {/* {userData || (userId !== null && user !== null ? */}
@@ -36,10 +46,10 @@ const LogInLink = ({ user, userId, logInLinkClicked, setShowShowcase }) => {
                 :
                 <p>Log in:</p>
             }
-            <button id="header-login-button" className="button-react-icon" onClick={logInLinkClicked}>
-                {userId !== null && user !== null ? <FiLogOut className="react-icon" /> : <FiLogIn className="react-icon" />}
+            <button id="header-login-button" className="button-react-icon" onClick={customBtnClicked}>
+                {userData ? <FiLogOut className="react-icon" /> : <FiLogIn className="react-icon" />}
             </button>
-            <LogoutButton />
+            {/* <LogoutButton /> */}
         </div>
     )
 }
