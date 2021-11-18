@@ -15,18 +15,24 @@ import Projects from './components/About/Projects'
 import Contact from './components/About/Contact'
 import CommentSection from './components/CommentSection/CommentSection'
 import Footer from './components/Footer'
-import { getData } from './components/utils/utils'
+// import { getData } from './components/utils/utils'
 import Events from './components/Events'
 import UserfrontKEY from "./Userfront"
+require('dotenv').config()
+
 const App = () => {
-  Userfront.init(UserfrontKEY.INIT)
-  const getUserId = () => {
-    let sessionUserId = window.sessionStorage.getItem('userId')
-    console.log('render: ', sessionUserId)
-    return sessionUserId ? sessionUserId : null
-  }
+  console.log(process.env)
+  console.log(process.env.REACT_APP_KEY_USERFRONT_INIT)
+
+  Userfront.init(process.env.REACT_APP_KEY_USERFRONT_INIT)
+  // Userfront.init(UserfrontKEY.INIT) toCleanItUp18nov! i mean TODAY!
+  // const getUserId = () => {
+  //   let sessionUserId = window.sessionStorage.getItem('userId')
+  //   console.log('render: ', sessionUserId)
+  //   return sessionUserId ? sessionUserId : null
+  // }
   const [offset, setOffset] = useState(0)
-  const [userId, setUserId] = useState(getUserId())
+  // const [userId, setUserId] = useState(getUserId())
   // const [isLoggedIn, setIsLoggedIn] = useState(userId === null ? false : true)
   const [isLoggedIn, setIsLoggedIn] = useState(Userfront.accessToken() && true)
 
@@ -39,11 +45,6 @@ const App = () => {
   const PasswordResetForm = Userfront.build({
     toolId: "brnnkk"
   })
-  // class Demo extends React.Component {
-  //   render () {
-  //     return <LogoutButton />
-  //   }
-  // }
 
 
   useEffect(() => {

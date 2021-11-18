@@ -3,11 +3,13 @@ import { Link } from "react-router-dom"
 import { FiSend, FiLogIn } from "react-icons/fi"
 import { checkUsername, checkEmail, checkPassword } from "./utils/utils"
 import Userfront from "@userfront/react"
-import UserfrontKEY from "./Userfront"
+// import UserfrontKEY from "../Userfront"
+require('dotenv').config()
 
 const RegisterForm = () => {
 
-    Userfront.init(UserfrontKEY.INIT)
+    Userfront.init(process.env.REACT_APP_KEY_USERFRONT_INIT)
+    // Userfront.init(UserfrontKEY.INIT)
 
     const SignupForm = Userfront.build({
         toolId: "odkkol"

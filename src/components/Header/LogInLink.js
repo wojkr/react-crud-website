@@ -1,33 +1,36 @@
+import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import { FiLogIn, FiLogOut } from "react-icons/fi"
-import UserIcon from "../UserIcon"
-
 import Userfront from "@userfront/react"
-import UserfrontKEY from "./Userfront"
+import UserfrontKEY from "../../Userfront"
+import UserIcon from "../UserIcon"
+require('dotenv').config()
 
 
 const LogInLink = ({ user, userId, logInLinkClicked, setShowShowcase }) => {
+
+    const [userData, setUserData] = useState(Userfront.user)
+
     const hideShowcase = () => {
         setShowShowcase(false)
     }
-    console.log(userId, user)
 
-    Userfront.init(UserfrontKEY.INIT)
+    // Userfront.init(UserfrontKEY.INIT)
+    Userfront.init(process.env.KEY_USERFRONT_INIT)
     const LogoutButton = Userfront.build({//https://userfront.com/guide/toolkit/build-logout-button-react.html  BUILD OWN ONE!
         toolId: "rorrdb"
     })
-    const userData = JSON.stringify(Userfront.user, null, 2)
-
-    console.log(userData || 'userNotLoggedIn')
     console.log('stopped here, get the data from userfront to display, and customise the button')
-    // user = userData.name
-    // userId = userData.userId
+    user = userData.name
+    userId = userData.userId
 
     return (
         <div className="flex-row">
-            {userId !== null && user !== null ?
+            {/* {userData || (userId !== null && user !== null ? */}
+            {userData ?
                 <>
-                    <Link className="flex-row class-link" to={"/user/" + user.id} onClick={hideShowcase}>{user.name}</Link>
+                    {/* <Link className="flex-row class-link" to={"/user/" + user.id} onClick={hideShowcase}>{user.name}</Link> */}
+                    <Link className="flex-row class-link" to={"/user/" + userId} onClick={hideShowcase}>{userData.name}</Link>
                     <UserIcon userId={userId} />
                 </>
                 :

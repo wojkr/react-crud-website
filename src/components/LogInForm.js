@@ -2,10 +2,13 @@ import { useState } from "react"
 import { useNavigate, Link } from "react-router-dom"
 import { FiSend, FiFeather } from "react-icons/fi"
 import Userfront from "@userfront/react"
-import UserfrontKEY from "./Userfront"
+// import UserfrontKEY from "../Userfront"
+require('dotenv').config()
+
 const LogInForm = ({ setIsLoggedIn }) => {
 
-    Userfront.init(UserfrontKEY.INIT)
+    // Userfront.init(UserfrontKEY.INIT)
+    Userfront.init(process.env.REACT_APP_KEY_USERFRONT_INIT)
 
     const LoginForm = Userfront.build({
         toolId: "armmkl"
