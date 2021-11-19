@@ -26,6 +26,27 @@ const RegisterForm = () => {
         console.log('here: Func send data to serv, send email to comfirm users email', { user: user, email: email, passwordToHash: password })
     }
 
+
+    const register = async (user, email, password) => {
+        const res = await Userfront.signup({
+            method: "password",
+            email: email,
+            name: "Jane Doe",
+            username: user,
+            data: {
+                custom: "information",
+            },
+            password: password,
+        }).catch((error) => {
+            console.log(error.message)
+            console.log(wrongData)
+            setWrongData(error.message)
+            setMessage(error.message)
+            console.log(wrongData)
+        })
+        return res
+    }
+
     const isInputOk = () => {
         if (checkUsername(user, setMessage, setWrongData) &&
             checkEmail(email, setMessage, setWrongData) &&
@@ -33,30 +54,30 @@ const RegisterForm = () => {
             return true
         }
     }
-    const checkForm = (user, email, password) => {
+
+    const onSubmit = async (e) => {
+        e.preventDefault()
         setWrongData(false)
-        const correctData = isInputOk();
-        if (correctData) {
+        if (isInputOk()) {
             saveUser(user, email, password)
-            alert('register successfully, pls check your email')
-            setUser('')
-            setPassword('')
-            setEmail('')
+            const newUserData = await register(user, email, password)
+            if (typeof newUserData !== Promise && newUserData) {
+                // alert('register successfully, pls check your email')
+                console.log('register successfully, pls check your email')
+                setUser('')
+                setPassword('')
+                setEmail('')
+            }
         } else {
             setWrongData(true)
         }
-    }
-
-    const onSubmit = (e) => {
-        e.preventDefault()
-        checkForm(user, email, password)
     }
 
     return (
         <>
             <div className="full-page flex-column flex-center default-background">
                 <div className="default-box-container">
-                    {/* <h2>Register:</h2>
+                    <h2>Register:</h2>
                     {wrongData && <p className="message-error">{message}</p>}
                     <form onSubmit={onSubmit} className="flex-column">
                         <div className="flex-column flex-a-start flex-grow">
@@ -72,8 +93,8 @@ const RegisterForm = () => {
                             <input className="default-form w-80" id="comment-form-password" type="password" value={password} placeholder="Password" onChange={(e) => setPassword(e.target.value)}></input>
                         </div>
                         <button className="button-react-icon button-block" type="submit"><FiSend className="react-icon" /></button>
-                    </form> */}
-                    <SignupForm />
+                    </form>
+                    {/* <SignupForm /> */}
                     <h3>If you have account already, log in here: <Link to="/login" className="button-react-icon"><FiLogIn className="react-icon" /></Link></h3>
                 </div>
 

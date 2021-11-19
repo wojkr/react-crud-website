@@ -6,6 +6,7 @@ import Header from './components/Header/Header'
 import LogInForm from './components/LogInForm'
 import RegisterForm from './components/RegisterForm'
 import User from './components/User'
+import UserEdit from './components/UserEdit'
 import Groups from './components/Groups/Groups'
 import Join from './components/Join'
 import Showcase from './components/Showcase/Showcase'
@@ -74,9 +75,14 @@ const App = () => {
             hideShowcase={() => setShowShowcase(!showShowcase)}
           />
         } />
-        <Route exact path="/User/:id" element={
+        {/* <Route exact path="/User/:id" element={
           <User />
-        } />
+        } /> */}
+        <Route path="/user/" element={<User me={true} />}>
+          <Route path="/user/edit/:id" element={<UserEdit />} />
+          <Route path="/user/:id" element={<User me={false} />} />
+        </Route>
+
         <Route exact path="/Login" element={
           <LogInForm
             // isLoggedIn={isLoggedIn}

@@ -4,7 +4,7 @@ export const fetchData = async (dataName) => {
     return data
 }
 
-export const getData = async (dataName, setDataFunc, id = false) => {//wrap it in useCallback Hook with [] Array of dep
+export const getData = async (dataName, setDataFunc, id = false, serverURL = "http://localhost:5000/") => {//wrap it in useCallback Hook with [] Array of dep
     console.log(id)
     if (id === null || id === undefined) {
         console.log('wrong inputs: ', dataName, [id], [setDataFunc])
@@ -13,7 +13,8 @@ export const getData = async (dataName, setDataFunc, id = false) => {//wrap it i
             dataName += `/${id}`
         }
         const fetchData = async (dataName) => {
-            const res = await fetch(`http://localhost:5000/${dataName}`)
+            // const res = await fetch(`http://localhost:5000/${dataName}`)
+            const res = await fetch(serverURL + dataName)
             const data = await res.json()
             return data
         }

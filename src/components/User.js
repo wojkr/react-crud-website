@@ -1,19 +1,69 @@
 import { FiEdit } from "react-icons/fi"
 // import {  FiUser } from "react-icons/fi"
 import LinkToGroup from "./LinkToGroup"
-import ProductSmall from "./ProductSmall"
-import GoBack from "./GoBack"
 import { useEffect, useState } from "react"
-import { getData } from "./utils/utils"
-import { useParams, Link } from "react-router-dom"
+import { useParams, useNavigate, Link } from "react-router-dom"
+import Userfront from "@userfront/react"
 
-const User = () => {
+import { getData } from "./utils/utils"
+import GoBack from "./GoBack"
+import ProductSmall from "./ProductSmall"
+
+const User = ({ me }) => {
+    console.log(me)
+    // const [isItMe]
+    const [isMe, setIsMe] = useState(me || false)
+    const navigate = useNavigate()
     const [user, setUser] = useState('')
     const { id } = useParams()
+    const [userLogged, setUserLogged] = useState(Userfront.user || false)
 
     useEffect(() => {
-        getData(`Users`, setUser, id)
+        alert("go there to sort the routing problem with user: https://reacttraining.com/blog/react-router-v6-pre/#nested-routes-and-layouts")
+        console.log(userLogged)
+        if (userLogged.userId) {
+            console.log(isMe)
+            if (isMe) {
+                navigate("/user/" + userLogged.userId)
+            }
+        } else {
+            navigate("/Login")
+        }
+    }, [isMe, userLogged])
+
+
+    useEffect(() => {
+        // getData(`Users`, setUser, id)
+        // const axios = require('axios')
+        // const options = {
+        //     headers: {
+        //         Accept: "*/*",
+        //         Authorization: "Bearer uf_test_admin_rbvqr4nd_9140bfa19f3e9af9bd1baef9d65d1935"
+        //     }
+        // }
+        // axios.get(`https://api.userfront.com/v0/users/` + id, options)
+        //     .then((response) => console.log(response.data))
+        //     .catch((err) => console.error(err))
     }, [id])
+
+
+    // const editUserData = () => {
+    //     const axios = require('axios')
+    //     const payload = {
+    //         userId: 5,
+    //         email: "user@example.com",
+    //         username: "janedoe",
+    //         name: "Jane Doe",
+    //         image: "https://res.cloudinary.com/component/image/upload/avatars/avatar-16.png",
+    //         locked: false,
+    //         data: {
+    //             custom: "data"
+    //         }
+    //     }
+    //     axios.put("https://api.userfront.com/v0/users/" + 1, payload, options)
+    //         .then((response) => console.log(response.data))
+    //         .catch((err) => console.error(err));
+    // }
 
     return (
         <div id="user" className="full-page default-background pt-10vh box-sizing-border-box">
