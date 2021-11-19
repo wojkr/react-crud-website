@@ -130,7 +130,6 @@ const CommentSection = ({ isLoggedIn }) => {
             <div className="comment-section" id="comment-section" >
                 <div className="container">
                     <h1>CommentSection!</h1>
-
                     {isLoggedIn ?
                         <HeaderCom
                             addComment={COMMENTS.add}

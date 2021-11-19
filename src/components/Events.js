@@ -8,7 +8,6 @@ const Events = () => {
     const { id } = useParams()
     const [allEvents, setAllEvents] = useState([])
     let events = []
-    let titleText = ''
     useEffect(() => {
         getData('Events', setAllEvents)
     }, [])

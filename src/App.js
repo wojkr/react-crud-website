@@ -17,12 +17,13 @@ import CommentSection from './components/CommentSection/CommentSection'
 import Footer from './components/Footer'
 // import { getData } from './components/utils/utils'
 import Events from './components/Events'
-import UserfrontKEY from "./Userfront"
+// import UserfrontKEY from "./Userfront"
 require('dotenv').config()
 
 const App = () => {
   console.log(process.env)
-  console.log(process.env.REACT_APP_KEY_USERFRONT_INIT)
+  // console.log(process.env.REACT_APP_KEY_USERFRONT_INIT)
+
 
   Userfront.init(process.env.REACT_APP_KEY_USERFRONT_INIT)
   // Userfront.init(UserfrontKEY.INIT) toCleanItUp18nov! i mean TODAY!
@@ -36,7 +37,6 @@ const App = () => {
   // const [isLoggedIn, setIsLoggedIn] = useState(userId === null ? false : true)
   const [isLoggedIn, setIsLoggedIn] = useState(Userfront.accessToken() && true)
 
-  console.log(isLoggedIn)
   const [showNavbar, setShowNavbar] = useState(false)
   const [showShowcase, setShowShowcase] = useState(true)
 
@@ -64,6 +64,8 @@ const App = () => {
         setShowShowcase={setShowShowcase}
         showNavbar={showNavbar}
         offset={offset}
+        isLoggedIn={isLoggedIn}
+        setIsLoggedIn={setIsLoggedIn}
       />
       <Routes>
         <Route path="/" element={
@@ -77,7 +79,7 @@ const App = () => {
         } />
         <Route exact path="/Login" element={
           <LogInForm
-            isLoggedIn={isLoggedIn}
+            // isLoggedIn={isLoggedIn}
             setIsLoggedIn={setIsLoggedIn}
           />
           // <LoginForm />

@@ -1,4 +1,5 @@
-import { FiEdit, FiUser } from "react-icons/fi"
+import { FiEdit } from "react-icons/fi"
+// import {  FiUser } from "react-icons/fi"
 import LinkToGroup from "./LinkToGroup"
 import ProductSmall from "./ProductSmall"
 import GoBack from "./GoBack"

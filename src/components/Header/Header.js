@@ -4,44 +4,30 @@ import NavToggler from './NavToggler'
 import Nav from './Nav'
 import ScrollToNav from '../utils/ScrollToNav'
 
-import { useState, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { getData } from "../utils/utils"
-import { ALERT } from '../utils/utils'
-import Alert from '../utils/Alert'
+// import { useState } from 'react'
+// import { useNavigate } from 'react-router-dom'
+// import { getData } from "../utils/utils"
+// import { ALERT } from '../utils/utils'
+// import Alert from '../utils/Alert'
+// import Userfront from '../../Userfront'
 
-const Header = ({ setShowShowcase, onClick, showNavbar, offset }) => {
+const Header = ({ setShowShowcase, onClick, showNavbar, offset, setIsLoggedIn, isLoggedIn }) => {
 
-    const navigate = useNavigate()
-    const userId = window.sessionStorage.getItem('userId')
+    // const navigate = useNavigate()
 
-    const [showAlert, setShowAlert] = useState(false)
-    const [alertInfo, setAlertInfo] = useState('')
-    const [user, setUser] = useState(null)
+    // const userId = window.sessionStorage.getItem('userId')
+    // const [user, setUser] = useState(null)
+    // const [user, setUser] = useState(null)
+    // const [userId, setUserId] = useState(Userfront.user.userId || null)
 
-    useEffect(() => {
-        getData(`Users`, setUser, userId)
-    }, [userId])
 
-    const logOutFunc = () => {
-        window.sessionStorage.clear()
-        // setIsLoggedIn(false)
-    }
-    const logInLinkClicked = () => {
-        if (!userId) {
-            navigate("/login")
-        } else {
-            ALERT(
-                setShowAlert,
-                setAlertInfo,
-                "are you sure you want to log out?",
-                'Yes',
-                [logOutFunc, null, navigate, '/'],
-                'no',
-                () => { }
-            )
-        }
-    }
+    // useEffect(() => {
+    //     getData(`Users`, setUser, userId)
+    // }, [userId])
+    // useEffect(() => {
+    //     getData(`Users`, setUser, userId)
+    // }, [userId])
+
     return (
         <>
             <div className="header" id="header" >
@@ -49,7 +35,8 @@ const Header = ({ setShowShowcase, onClick, showNavbar, offset }) => {
                     <div className="container flex-row">
                         <Branding />
                         <div className="flex-row">
-                            <LogInLink user={user} userId={userId} setShowShowcase={setShowShowcase} logInLinkClicked={logInLinkClicked} />
+                            <LogInLink setShowShowcase={setShowShowcase} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
+                            {/* <LogInLink user={user} userId={userId} setShowShowcase={setShowShowcase} logInLinkClicked={logInLinkClicked} /> */}
                             <NavToggler onClick={onClick} showNavbar={showNavbar} />
                         </div>
                     </div>
@@ -57,7 +44,6 @@ const Header = ({ setShowShowcase, onClick, showNavbar, offset }) => {
                 <Nav showNavbar={showNavbar} offset={offset} onClick={onClick} />
                 {offset > 500 && <ScrollToNav />}
             </div>
-            {showAlert && <Alert alertInfo={alertInfo} />}
         </>)
 }
 

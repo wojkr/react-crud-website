@@ -2,7 +2,6 @@ import { useState } from "react"
 import { useNavigate, Link } from "react-router-dom"
 import { FiSend, FiFeather } from "react-icons/fi"
 import Userfront from "@userfront/react"
-import UserfrontCore from "@userfront/core"
 // import UserfrontKEY from "../Userfront"
 require('dotenv').config()
 
@@ -11,9 +10,9 @@ const LogInForm = ({ setIsLoggedIn }) => {
     // Userfront.init(UserfrontKEY.INIT)
     Userfront.init(process.env.REACT_APP_KEY_USERFRONT_INIT)
 
-    const LoginForm = Userfront.build({
-        toolId: "armmkl"
-    })
+    // const LoginForm = Userfront.build({
+    //     toolId: "armmkl"
+    // })
 
     const navigate = useNavigate();
     const [username, setUsername] = useState('')
@@ -30,31 +29,33 @@ const LogInForm = ({ setIsLoggedIn }) => {
     //     return null
     // }
     // }
-    const checkPassword = (username, password) => {
+    const checkPassword = async (username, password) => {
         // return fetchUserDataFromServer(username, password)
-        const res = Userfront.login({
+        const res = await Userfront.login({
             method: "password",
             emailOrUsername: username,
             password: password,
         }).catch((error) => {
             console.log(error.message)
+            console.log(wrongPassword)
+            setWrongPassword(error.message)
+            console.log(wrongPassword)
         })
         return res
     }
 
-    const onSubmit = (e) => {
+    const onSubmit = async (e) => {
         e.preventDefault()
-        const userData = checkPassword(username, password)
+        setWrongPassword(false)
+
+        const userData = await checkPassword(username, password)
         console.log(userData)
-        console.log('await the part below!')
-        if (userData) {
+        if (typeof userData !== Promise && userData) {
+            console.log('userData: ', userData)
             setUsername('')
             setPassword('')
-            // window.sessionStorage.setItem('userId', userData.id)
             setIsLoggedIn(true)
             navigate(-1)
-        } else {
-            setWrongPassword(true)
         }
     }
 
@@ -62,7 +63,7 @@ const LogInForm = ({ setIsLoggedIn }) => {
         <div className="full-page flex-column flex-center default-background">
             <div className="default-box-container">
                 <h2>Log in:</h2>
-                {wrongPassword && <p className="message-error">Incorrect Username or password</p>}
+                {wrongPassword && <p className="message-error">{wrongPassword}</p>}
                 <form onSubmit={onSubmit} className="flex-column">
                     <div className="flex-column flex-a-start flex-grow">
                         <label htmlFor="comment-form-user">Username or Email: </label>
