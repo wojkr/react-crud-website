@@ -1,7 +1,7 @@
 import { FiEdit } from "react-icons/fi"
 // import {  FiUser } from "react-icons/fi"
 import LinkToGroup from "./LinkToGroup"
-import { useEffect, useState } from "react"
+import { useEffect, useLayoutEffect, useState } from "react"
 import { useParams, useNavigate, Link } from "react-router-dom"
 import Userfront from "@userfront/react"
 
@@ -9,31 +9,26 @@ import { getData } from "./utils/utils"
 import GoBack from "./GoBack"
 import ProductSmall from "./ProductSmall"
 
-const User = ({ me }) => {
-    console.log(me)
-    // const [isItMe]
-    const [isMe, setIsMe] = useState(me || false)
+const User = () => {
     const navigate = useNavigate()
     const [user, setUser] = useState('')
     const { id } = useParams()
-    const [userLogged, setUserLogged] = useState(Userfront.user || false)
+    const [userLogged] = useState(Userfront.user || false)
 
     useEffect(() => {
-        alert("go there to sort the routing problem with user: https://reacttraining.com/blog/react-router-v6-pre/#nested-routes-and-layouts")
-        console.log(userLogged)
-        if (userLogged.userId) {
-            console.log(isMe)
-            if (isMe) {
+        if (!id) {
+            if (userLogged.userId) {
                 navigate("/user/" + userLogged.userId)
+            } else {
+                navigate("/Login")
             }
-        } else {
-            navigate("/Login")
         }
-    }, [isMe, userLogged])
+    }, [navigate, id, userLogged])
 
 
-    useEffect(() => {
-        // getData(`Users`, setUser, id)
+    useLayoutEffect(() => {
+        let isSubscribed = true
+        getData(`Users`, setUser, id, undefined, isSubscribed)
         // const axios = require('axios')
         // const options = {
         //     headers: {
@@ -44,6 +39,7 @@ const User = ({ me }) => {
         // axios.get(`https://api.userfront.com/v0/users/` + id, options)
         //     .then((response) => console.log(response.data))
         //     .catch((err) => console.error(err))
+        return () => isSubscribed = false
     }, [id])
 
 
@@ -75,7 +71,7 @@ const User = ({ me }) => {
                         </div>
                         <div className="flex-row border-light">
                             <h1>{user.name}</h1>
-                            <button className="button-react-icon"><FiEdit className="react-icon" /></button>
+                            {userLogged.userId === parseInt(id) && <Link to={"/user/edit/" + id} className="class-link button-react-icon"><FiEdit className="react-icon" /></Link>}
                         </div>
                         <p className="border-light" >Membership from {user.joined}</p>
                         <h4 className="border-light" >Birthday: {user.birthday}</h4>
@@ -129,7 +125,7 @@ const User = ({ me }) => {
                                 <h3>+</h3>
                                 <ProductSmall id={user.favoriteCookieId} />
                             </div>
-                            <p>invite for favortie</p>
+                            {userLogged.userId && (userLogged.userId !== parseInt(id)) && <p>invite for favortie</p>}
                         </div>
                     </div>
                 </div>

@@ -11,9 +11,9 @@ const RegisterForm = () => {
     Userfront.init(process.env.REACT_APP_KEY_USERFRONT_INIT)
     // Userfront.init(UserfrontKEY.INIT)
 
-    const SignupForm = Userfront.build({
-        toolId: "odkkol"
-    })
+    // const SignupForm = Userfront.build({
+    //     toolId: "odkkol"
+    // })
 
 
     const [user, setUser] = useState('')
@@ -44,7 +44,7 @@ const RegisterForm = () => {
             setMessage(error.message)
             console.log(wrongData)
         })
-        return res
+        return res || true
     }
 
     const isInputOk = () => {
@@ -71,6 +71,7 @@ const RegisterForm = () => {
         } else {
             setWrongData(true)
         }
+        return true
     }
 
     return (

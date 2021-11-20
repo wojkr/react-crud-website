@@ -4,7 +4,25 @@ export const fetchData = async (dataName) => {
     return data
 }
 
-export const getData = async (dataName, setDataFunc, id = false, serverURL = "http://localhost:5000/") => {//wrap it in useCallback Hook with [] Array of dep
+// export const getData = async (dataName, setDataFunc, id = false, serverURL = "http://localhost:5000/", isSubscribed = true) => {//wrap it in useCallback Hook with [] Array of dep
+//     console.log(id)
+//     if (id === null || id === undefined) {
+//         console.log('wrong inputs: ', dataName, [id], [setDataFunc])
+//     } else {
+//         if (id !== false) {
+//             dataName += `/${id}`
+//         }
+//         const fetchData = async (dataName) => {
+//             // const res = await fetch(`http://localhost:5000/${dataName}`)
+//             const res = await fetch(serverURL + dataName)
+//             const data = await res.json()
+//             return data
+//         }
+//         const DataFromServer = await fetchData(dataName)
+//         return isSubscribed ? setDataFunc(DataFromServer) : null
+//     }
+// }
+export const getData = (dataName, setDataFunc, id = false, serverURL = "http://localhost:5000/", isSubscribed = true) => {//wrap it in useCallback Hook with [] Array of dep
     console.log(id)
     if (id === null || id === undefined) {
         console.log('wrong inputs: ', dataName, [id], [setDataFunc])
@@ -12,14 +30,17 @@ export const getData = async (dataName, setDataFunc, id = false, serverURL = "ht
         if (id !== false) {
             dataName += `/${id}`
         }
-        const fetchData = async (dataName) => {
-            // const res = await fetch(`http://localhost:5000/${dataName}`)
-            const res = await fetch(serverURL + dataName)
-            const data = await res.json()
-            return data
-        }
-        const DataFromServer = await fetchData(dataName)
-        setDataFunc(DataFromServer)
+        fetch(serverURL + dataName)
+            .then((res) => {
+                res.json()
+                    .then((res2) => {
+                        return isSubscribed ?
+                            setDataFunc(res2)
+                            :
+                            null
+                    })
+            },
+                (e) => { console.log(e.message) })
     }
 }
 
