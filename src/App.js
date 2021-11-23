@@ -69,6 +69,7 @@ const App = () => {
         <Route path="/user/:id" element={<User />} />
         <Route path="/user" element={< User />} />
         <Route path="/user/edit/:id" element={<UserEdit />} />
+        <Route path="/user/edit" element={<UserEdit />} />
 
         <Route exact path="/Login" element={
           <LogInForm
