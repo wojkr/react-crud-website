@@ -484,10 +484,21 @@ html{
   border-radius: 0.4rem;
   box-shadow: 0 0 1rem #0032;
 }
+.bg-lighter-60{
+  background-color: var(--lighter-60);
+}
+.mr-small{
+  margin-right: 3px;
+}
 .comment-form-text{
   height: 3rem;
 }
-
+.upVoted{
+  background-color: #7f7;
+}
+.downVoted{
+  background-color: #f77;
+}
 /* .sort-container, .comment-container,*/
 .default-box-container,.default-box-lighter-60{
   margin: 1rem 0rem;

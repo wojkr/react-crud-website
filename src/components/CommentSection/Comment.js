@@ -4,10 +4,12 @@ import DateComment from "./DateComment"
 import DeleteComment from "./DeleteComment"
 import EditComment from "./EditComment"
 import Votes from './Votes'
+import Userfront from "@userfront/react"
 
 const Comment = ({ editComment, deleteComment, comment, isLoggedIn }) => {
     const [showEdit, setShowEdit] = useState(false)
     const editToggler = () => setShowEdit(!showEdit)
+    const [userLogged] = useState(Userfront.user || false)
 
     const content = () => {
         if (showEdit) {
@@ -28,7 +30,7 @@ const Comment = ({ editComment, deleteComment, comment, isLoggedIn }) => {
                             <DateComment comment={comment} />
                         </div>
                         <span className="flex-row">
-                            {isLoggedIn && <>
+                            {userLogged.userId.toString() === comment.userId && <>
                                 <button
                                     className="button-react-icon"
                                     onClick={editToggler}>
