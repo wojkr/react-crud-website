@@ -1,12 +1,16 @@
 # PROJECT IN BUILD 
-    *** This app requires access to EmailJS and Userfront. ***
+by [wojKr](https://github.com/wojkr)
+
+This app requires access to EmailJS and Userfront.
+
+[Contact Me](mailto:test.wojkr@gmail.com?subject=[GitHub]%20React%20Crud%20Website)
 
 ## Overview
 ### Description
 This is my first go with React - _coffee_**House** website with a pinch of social media.
 Currently the project contains: 
 * Working email contact form,
-* Full auth with confirmation powered by _EmailJS_,
+* Full auth with confirmation powered by _Userfront_,
 * User accounts (CRUD),
 * Comment section (CRUD) with rating with votes. 
 
@@ -16,8 +20,6 @@ Currently the project contains:
 * EmailJS, 
 * UserfrontAPI auth.
 
-[Contact Me](mailto:test.wojkr@gmail.com?subject=[GitHub]%20React%20Crud%20Website)
-by [wojKr](https://github.com/wojkr)
 
 # Getting Started with react-crud-website App
 
