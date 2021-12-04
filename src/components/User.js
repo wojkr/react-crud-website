@@ -135,8 +135,7 @@ const User = () => {
                     <GoBack />
                 </div>
             }
-
-        </div >
+        </div>
     )
 }
 export default User

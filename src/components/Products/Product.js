@@ -82,7 +82,7 @@ const Product = ({ product, details }) => {
             </div>
             :
             <div className="text-center pt-10vh">
-                <h2 >Product does not exist</h2>
+                <h2>Product does not exist</h2>
                 <GoBack />
             </div>
         }
