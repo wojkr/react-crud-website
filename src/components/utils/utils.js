@@ -44,6 +44,21 @@ export const getData = (dataName, setDataFunc, id = false, serverURL = "http://l
     }
 }
 
+export const editData = async (data, dataName, dataId = false, serverURL = "http://localhost:5000/", isSubscribed = true) => {
+    if (dataId) {
+        await fetch(`http://localhost:5000/${dataName}/${dataId}`, {
+            method: 'PUT',
+            headers: {
+                'Content-type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+    } else {
+        console.log('wrong id')
+    }
+}
+
+
 export const ALERT = (setShowAlertFunc, setAlertInfoFunc, message, option1_text, option1_func, option2_text, option2_func) => {
     // optionX_func [function, functionInput, URL to go,navigateFunc]
     setShowAlertFunc(true)

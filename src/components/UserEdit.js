@@ -2,7 +2,7 @@ import { useState, useEffect } from "react"
 import { FiSend, FiPlus, FiX } from "react-icons/fi"
 import { useParams, useNavigate } from "react-router-dom"
 import Userfront from "@userfront/react"
-import { getData } from "./utils/utils"
+import { getData, editData } from "./utils/utils"
 import GoBack from "./GoBack"
 
 const UserEdit = () => {
@@ -12,8 +12,8 @@ const UserEdit = () => {
     const [birthday, setBirthday] = useState('')
     const [hobby, setHobby] = useState('')
     const [newHobby, setNewHobby] = useState('')
-    const [favDrink, setFavDrink] = useState('')
-    const [favCookie, setFavCookie] = useState('')
+    const [favoriteDrinkId, setFavoriteDrinkId] = useState('')
+    const [favoriteCookieId, setFavoriteCookieId] = useState('')
 
     const [products, setProducts] = useState([])
     const [drinks, setDrinks] = useState([])
@@ -51,8 +51,8 @@ const UserEdit = () => {
                 setBio(user.bio)
                 setBirthday(user.birthday)
                 setHobby(user.hobby)
-                setFavDrink(user.favoriteDrinkId)
-                setFavCookie(user.favoriteCookieId)
+                setFavoriteDrinkId(user.favoriteDrinkId)
+                setFavoriteCookieId(user.favoriteCookieId)
                 setUserFlag(true)
             }
         }
@@ -74,9 +74,32 @@ const UserEdit = () => {
         setHobby(hobby.filter((h) => h !== toRemove))
     }
 
-    const onSubmit = (e) => {
+    const onSubmit = async (e) => {
         e.preventDefault()
+        const newData = user
+        newData.bio = bio
+        newData.birthday = birthday
+        newData.hobby = hobby
+
+        newData.favoriteDrinkId = favoriteDrinkId
+        if (favoriteDrinkId) {
+            newData.favoriteDrink = drinks.filter(d => d.id.toString() === favoriteDrinkId.toString())[0].name
+        } else {
+            newData.favoriteDrink = ''
+            newData.favoriteDrinkId = ''
+        }
+
+        newData.favoriteCookieId = favoriteCookieId
+        if (favoriteCookieId) {
+            newData.favoriteCookie = cookies.filter(c => c.id.toString() === favoriteCookieId.toString())[0].name
+        } else {
+            newData.favoriteCookie = ''
+            newData.favoriteCookieId = ''
+        }
+        await editData(newData, 'Users', userLogged.userId)
+        navigate('/user/' + userLogged.userId)
     }
+
     return (<>
         <div className="full-page flex-column flex-center default-background">
             <h1>userEdit page</h1>
@@ -108,7 +131,7 @@ const UserEdit = () => {
                     </div>
                     <div className="flex-column flex-a-start flex-grow w-100">
                         <label htmlFor="comment-form-rating">FavDrink: </label>
-                        <select className="default-form w-100" value={favDrink} onChange={(e) => setFavDrink(e.target.value)}>
+                        <select className="default-form w-100" value={favoriteDrinkId} onChange={(e) => setFavoriteDrinkId(e.target.value)}>
                             <option value=''></option>)
                             {
                                 drinks && drinks.map((d) =>
@@ -119,7 +142,7 @@ const UserEdit = () => {
                     </div>
                     <div className="flex-column flex-a-start flex-grow w-100">
                         <label htmlFor="comment-form-rating">FavCookie: </label>
-                        <select className="default-form w-100" value={favCookie} onChange={(e) => setFavCookie(e.target.value)}>
+                        <select className="default-form w-100" value={favoriteCookieId} onChange={(e) => setFavoriteCookieId(e.target.value)}>
                             <option value=''></option>)
                             {
                                 cookies && cookies.map((c) =>
