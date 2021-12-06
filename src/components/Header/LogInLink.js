@@ -38,6 +38,7 @@ const LogInLink = ({ setShowShowcase, isLoggedIn, setIsLoggedIn }) => {
     const logout = () => {
         UserfrontCore.logout({ redirect: false })
         setIsLoggedIn(false)
+        setShowShowcase(true)
     }
 
     const customBtnClicked = () => {
@@ -52,6 +53,7 @@ const LogInLink = ({ setShowShowcase, isLoggedIn, setIsLoggedIn }) => {
                 () => { }
             )
         } else {
+            hideShowcase()
             navigate("/login")
         }
     }
@@ -66,7 +68,7 @@ const LogInLink = ({ setShowShowcase, isLoggedIn, setIsLoggedIn }) => {
                 <>
                     {/* <Link className="flex-row class-link" to={"/user/" + user.id} onClick={hideShowcase}>{user.name}</Link> */}
                     <Link className="flex-row class-link" to={"/user/" + userData.userId} onClick={hideShowcase}>{userData.name}</Link>
-                    <UserIcon userId={userData.userId} />
+                    <UserIcon userId={userData.userId} onClick={hideShowcase} />
                 </>
                 :
                 <p>Log in:</p>

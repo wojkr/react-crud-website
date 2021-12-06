@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { useParams } from "react-router-dom"
+
 import Userfront from "@userfront/react";
 
 import Header from './components/Header/Header'
@@ -22,7 +24,8 @@ require('dotenv').config()
 const App = () => {
   // console.log(process.env.REACT_APP_KEY_USERFRONT_INIT)
 
-
+  const { id } = useParams()
+  console.log(id)
   Userfront.init(process.env.REACT_APP_KEY_USERFRONT_INIT)
   const [offset, setOffset] = useState(0)
   const [isLoggedIn, setIsLoggedIn] = useState(Userfront.accessToken() && true)
@@ -95,11 +98,10 @@ const App = () => {
             <About />
             <Projects />
             <Contact />
-            <Footer />
           </>
         } />
         <Route exact path="/Comments" element={
-          <CommentSection isLoggedIn={isLoggedIn} />
+          <CommentSection isLoggedIn={isLoggedIn} dataName="Comments" />
         } />
         <Route exact path="/Join" element={
           <Join isLoggedIn={isLoggedIn} />
@@ -115,9 +117,11 @@ const App = () => {
           <Route path=":id" element={<Events />} />
         </Route>
         <Route path="/Products" element={<Products />}>
-          <Route path=":id" element={<Products />} />
+          <Route path=":id" element={<Products isLoggedIn={isLoggedIn} />} />
         </Route>
+
       </Routes>
+      {!showShowcase && <Footer />}
     </Router>
   )
 }

@@ -33,7 +33,7 @@ const Header = ({ setShowShowcase, onClick, showNavbar, offset, setIsLoggedIn, i
             <div className="header" id="header" >
                 <div className="header-main">
                     <div className="container flex-row">
-                        <Branding />
+                        <Branding setShowShowcase={setShowShowcase} />
                         <div className="flex-row">
                             <LogInLink setShowShowcase={setShowShowcase} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
                             {/* <LogInLink user={user} userId={userId} setShowShowcase={setShowShowcase} logInLinkClicked={logInLinkClicked} /> */}
@@ -41,7 +41,7 @@ const Header = ({ setShowShowcase, onClick, showNavbar, offset, setIsLoggedIn, i
                         </div>
                     </div>
                 </div>
-                <Nav showNavbar={showNavbar} offset={offset} onClick={onClick} />
+                <Nav setShowShowcase={setShowShowcase} showNavbar={showNavbar} onClick={onClick} />
                 {offset > 500 && <ScrollToNav />}
             </div>
         </>)

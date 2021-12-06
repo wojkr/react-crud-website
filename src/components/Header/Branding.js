@@ -1,8 +1,13 @@
 import { Link } from "react-router-dom"
-const Branding = () => {
+const Branding = ({ setShowShowcase }) => {
+
+    const onClick = () => {
+        setShowShowcase(true)
+    }
+
     return (
         <>
-            <Link to="/" className="class-link"><h3 className="nav-branding"><i>coffee</i>HOUSE</h3></Link>
+            <Link to="/" className="class-link" onClick={onClick}><h3 className="nav-branding"><i>coffee</i>HOUSE</h3></Link>
         </>
     )
 }

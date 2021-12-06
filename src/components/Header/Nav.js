@@ -1,24 +1,23 @@
 import { NavLink } from "react-router-dom"
-const Nav = ({ showNavbar, offset, setShowShowcase, setShowLogInForm, setShowRegisterForm, onClick }) => {
-    const hideForms = () => {
+const Nav = ({ showNavbar, setShowShowcase, onClick }) => {
+    const hideNav = () => {
         onClick()
-        setShowLogInForm(false)
-        setShowRegisterForm(false)
     }
 
     const onClickShowShowcase = () => {
-        hideForms()
         setShowShowcase(true)
+        hideNav()
     }
     const onClickHideShowcase = () => {
-        hideForms()
         setShowShowcase(false)
+        hideNav()
     }
     return (
         <>
             <nav className={showNavbar ? "nav nav-shown" : "nav"}>
                 <ul className="nav-ul container flex-row flex-evenly">
                     <li>
+                        {/* <button onClick={onClickShowShowcase}>hey</button> */}
                         <NavLink to="/" className="class-link nav-item" onClick={onClickShowShowcase}>Home</NavLink>
                     </li>
                     <li>
