@@ -21,7 +21,23 @@ const EditComment = ({ comment, onClick, editComment }) => {
         if (!(user && text)) {
             alert('please add username/text')
         } else {
-            editComment({ user, text, rating, id, date, votes })
+
+            //         ssyLady01",
+            //   "userId": "2134",
+            //   "text": "Disgracefull!",
+            //   "rating": "0",
+            //   "id": "Nbr8BzW",
+            //   "date": 1635779271753,
+            //   "votes": -11,
+            //   "downVoteIds": [
+            //     "5"
+            //   ],
+            //   "upVoteIds": [
+            const newComment = comment
+            newComment.user = user
+            newComment.text = text
+            newComment.rating = rating
+            editComment(newComment)
             onClick()
         }
     }

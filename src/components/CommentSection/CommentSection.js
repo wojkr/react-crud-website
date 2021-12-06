@@ -8,8 +8,7 @@ import Sort from './Sort'
 import NavComments from './NavComments'
 import Alert from '../utils/Alert'
 
-const CommentSection = ({ isLoggedIn }) => {
-
+const CommentSection = ({ isLoggedIn, dataName }) => {
     const commentsRef = useRef(null)
     const scrollToComments = () => commentsRef.current.scrollIntoView()
 
@@ -21,12 +20,12 @@ const CommentSection = ({ isLoggedIn }) => {
     const [comments, setComments] = useState([])
 
     useEffect(() => {
-        getData('Comments', setComments)
+        getData(`${dataName}`, setComments)
     }, [])
 
     const COMMENTS = {
         add: async (comment) => {
-            const res = await fetch(`http://localhost:5000/Comments`, {
+            const res = await fetch(`http://localhost:5000/${dataName}`, {
                 method: 'POST',
                 headers: {
                     'Content-type': 'application/json'
@@ -37,7 +36,7 @@ const CommentSection = ({ isLoggedIn }) => {
             setComments([data, ...comments])
         },
         edit: async (comment) => {
-            await fetch(`http://localhost:5000/Comments/${comment.id}`, {
+            await fetch(`http://localhost:5000/${dataName}/${comment.id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-type': 'application/json'
@@ -54,7 +53,7 @@ const CommentSection = ({ isLoggedIn }) => {
         },
         delete: async (id) => {
             const deleteFunc = async (id) => {
-                await fetch(`http://localhost:5000/Comments/${id}`, { method: 'DELETE' })
+                await fetch(`http://localhost:5000/${dataName}/${id}`, { method: 'DELETE' })
                 setComments(comments.filter((comment) => comment.id !== id))
             }
             ALERT(

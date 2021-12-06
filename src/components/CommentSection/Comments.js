@@ -1,7 +1,12 @@
 import Comment from "./Comment"
 
 const Comments = ({ editComment, deleteComment, comments, commentsNumber, isLoggedIn }) => {
-    let shownComments = comments.slice()
+    let shownComments = []
+    if (Array.isArray(comments)) {
+        shownComments = comments.slice()
+    } else {
+        shownComments = [comments]
+    }
     if (commentsNumber === false) {
         let minCommentsNumber = 3;
         if (shownComments.length > minCommentsNumber) {
