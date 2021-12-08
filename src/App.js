@@ -25,14 +25,14 @@ const App = () => {
   // console.log(process.env.REACT_APP_KEY_USERFRONT_INIT)
 
   const { id } = useParams()
-  console.log(id)
   Userfront.init(process.env.REACT_APP_KEY_USERFRONT_INIT)
   const [offset, setOffset] = useState(0)
   const [isLoggedIn, setIsLoggedIn] = useState(Userfront.accessToken() && true)
   const [showNavbar, setShowNavbar] = useState(false)
-  const [showShowcase, setShowShowcase] = useState(true)
+  const [showShowcase, setShowShowcase] = useState(false)
 
-
+  console.log(showShowcase)
+  console.log(id)
 
   const PasswordResetForm = Userfront.build({
     toolId: "brnnkk"
@@ -63,7 +63,7 @@ const App = () => {
         <Route path="/" element={
           <Showcase
             showShowcase={showShowcase}
-            hideShowcase={() => setShowShowcase(!showShowcase)}
+            setShowShowcase={setShowShowcase}
           />
         } />
         {/* <Route exact path="/User/:id" element={
@@ -111,7 +111,8 @@ const App = () => {
           <Groups />
         } /> */}
         <Route exact path="/Groups" element={<Groups />}>
-          <Route path=":id" element={<Groups />} />
+          <Route path=":id" element={<Groups isLoggedIn={isLoggedIn}
+          />} />
         </Route>
         <Route exact path="/Events" element={<Events />}>
           <Route path=":id" element={<Events />} />

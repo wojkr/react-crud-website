@@ -1,39 +1,52 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useCallback } from "react"
 import { Link } from "react-router-dom"
 import Image from "./Image"
 import { getData } from "../utils/utils"
 
-const Showcase = ({ showShowcase, hideShowcase }) => {
+const Showcase = ({ showShowcase, setShowShowcase }) => {
 
     const [images, setImages] = useState([])
+    const [counter, setCounter] = useState(0)
+
+    const hideShowcase = () => {
+        setShowShowcase(!showShowcase)
+    }
 
     useEffect(() => {
+        if (!showShowcase) setShowShowcase(true)
+        console.log(`in showcase's useEffect: `, showShowcase)
         getData('ShowcaseImages', setImages)
-    }, [])
+    }, [showShowcase])
 
     const imagesInactiveNumber = (images.length - 2 >= 1 ? images.length - 2 : 1)
     const initialImgsState = ['showcase-img showcase-img-active', ...Array(imagesInactiveNumber).fill('showcase-img showcase-img-inactive'), 'showcase-img showcase-img-deactivated']
     const [imgsState, setImgsState] = useState(initialImgsState)
 
     const resetImgsState = () => {
-        // console.log('bReset', imgsState)
+        console.log('Reset imgsState')
         setImgsState(initialImgsState)
         // console.log('aRestet', imgsState)
     }
-
     const updateImgsState = (state) => {
-        console.log('inState')
         let newImgState = state
         newImgState.push(newImgState[0])
         newImgState.splice(0, 1)
         return newImgState
     }
+    const getNextImgsState = useCallback((prev) => {
+        // return updateImgsState(prev)
+        return [...updateImgsState(prev)]
+    }, [counter])
 
     useEffect(() => {
-        if (images[1]) {
+        console.log(images)
+        if (images) {
             resetImgsState()
             const carousel = setInterval(() => {
-                setImgsState(prev => [...updateImgsState(prev)])
+                console.log(counter)
+                setCounter(prev => prev + 1)
+                setImgsState(prev => getNextImgsState(prev))
+                // setImgsState(prev => [...updateImgsState(prev)] )
             }, 4000)
             return () => clearInterval(carousel)
         }
