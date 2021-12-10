@@ -31,9 +31,6 @@ const App = () => {
   const [showNavbar, setShowNavbar] = useState(false)
   const [showShowcase, setShowShowcase] = useState(false)
 
-  console.log(showShowcase)
-  console.log(id)
-
   const PasswordResetForm = Userfront.build({
     toolId: "brnnkk"
   })

@@ -30,7 +30,7 @@ const Comment = ({ editComment, deleteComment, comment, isLoggedIn }) => {
                             <DateComment comment={comment} />
                         </div>
                         <span className="flex-row">
-                            {userLogged.userId.toString() === comment.userId && <>
+                            {isLoggedIn && userLogged.userId.toString() === comment.userId && <>
                                 <button
                                     className="button-react-icon"
                                     onClick={editToggler}>
