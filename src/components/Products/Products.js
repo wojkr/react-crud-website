@@ -31,7 +31,7 @@ const Products = ({ isLoggedIn }) => {
                     }
                 </div>
             </div>
-            {products && <CommentSection isLoggedIn={isLoggedIn} dataName={`CommentsProduct${id}`} />}
+            {products && id && <CommentSection isLoggedIn={isLoggedIn} dataName={`CommentsProduct${id}`} />}
         </div>
     )
 }
