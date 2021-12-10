@@ -3,7 +3,7 @@ import Userfront from "@userfront/react"
 import { useState } from "react"
 
 const Votes = ({ comment, editComment, isLoggedIn }) => {
-    const [userLogged] = useState(Userfront.user || false)
+    const [userLogged, setUserLogged] = useState(Userfront.user || false)
 
     const upVote = () => {
         if (comment.upVoteIds.indexOf(userLogged.userId.toString()) === -1) {//if user didnt upvote 
@@ -33,13 +33,12 @@ const Votes = ({ comment, editComment, isLoggedIn }) => {
         }
         editComment(comment)
     }
-
     return (
         <div className="container-100 flex-row comment-votes" >
             <p> Was that comment helpfull ?</p >
             <div className="flex-row flex-a-center">
                 {
-                    userLogged &&
+                    userLogged.userId &&
                     <button
                         className={comment.upVoteIds && comment.upVoteIds.indexOf(userLogged.userId.toString()) === -1 ?
                             "button-react-icon"
@@ -52,7 +51,7 @@ const Votes = ({ comment, editComment, isLoggedIn }) => {
                 }
                 <h3>{comment.votes > 0 ? '+' : ''}{comment.votes}</h3>
                 {
-                    userLogged &&
+                    userLogged.userId &&
                     <button
                         className={comment.downVoteIds && comment.downVoteIds.indexOf(userLogged.userId.toString()) === -1 ?
                             "button-react-icon"
