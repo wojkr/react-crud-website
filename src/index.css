@@ -381,7 +381,7 @@ html{
   position:absolute;
   top:50%;
   left:50%;
-  height:fit-content;
+  height:100%;
   width:fit-content;
   background-color: #fff;
   transform: translate3d(0,-50%,0);
@@ -398,7 +398,7 @@ html{
 }
 .showcase-img-deactivated{
   left:50%;
-  transform: translate3d(-100%,-50%,0);
+  transform: translate3d(-150%,-50%,0);
 }
 
 #about{
