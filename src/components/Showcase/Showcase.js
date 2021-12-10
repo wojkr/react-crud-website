@@ -29,8 +29,11 @@ const Showcase = ({ showShowcase, setShowShowcase }) => {
     }
     const updateImgsState = (state) => {
         let newImgState = state
-        newImgState.push(newImgState[0])
-        newImgState.splice(0, 1)
+        // console.log(newImgState)
+        newImgState.push(newImgState[0])//these two works when 3pics
+        newImgState.splice(0, 1)//these two works when 3pics
+        // newImgState.unshift(newImgState.splice(newImgState.length-1,1)[0])
+        // console.log(newImgState)
         return newImgState
     }
     const getNextImgsState = useCallback((prev) => {
