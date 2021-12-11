@@ -29,21 +29,21 @@ const Contact = () => {
         <div id="contact" className="contact w-100 flex-column flex-center">
             <div className="container w-50">
                 <h1 className="display-4">CONTACT</h1>
-                <form ref={form} onSubmit={sendEmail} className="default-form flex-column flex-center">
+                <form ref={form} onSubmit={sendEmail} className="default-box-container form flex-column flex-center">
                     {success && <p className="message-success">{success}</p>}
                     {error && <p className="message-error">{error}</p>}
                     <div className="w-80 text-center">
-                        <div className="flex-column">
+                        <div className="flex-column flex-a-start">
                             <label htmlFor="formName">Name</label>
                             <input type="text" className="default-form " id="formName" name="name" placeholder="name"
                             />
                         </div>
-                        <div className="flex-column">
+                        <div className="flex-column flex-a-start">
                             <label htmlFor="formMail">Email address</label>
                             <input type="email" className="default-form w-80" id="formMail" name="email"
                                 placeholder="user@mail.com" />
                         </div>
-                        <div className="flex-column">
+                        <div className="flex-column flex-a-start">
                             <label htmlFor="formMessage">Message</label>
                             <textarea className="default-form w-100" name="message" id="formMessage" rows="3"
                                 placeholder="Message"></textarea>

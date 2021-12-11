@@ -83,20 +83,20 @@ const RegisterForm = () => {
                     <form onSubmit={onSubmit} className="flex-column">
                         <div className="flex-column flex-a-start flex-grow">
                             <label htmlFor="comment-form-user">Username: </label>
-                            <input className="default-form w-80" id="comment-form-user" type="text" value={user} placeholder="Username" onChange={(e) => setUser(e.target.value)}></input>
+                            <input className="default-form w-100" id="comment-form-user" type="text" value={user} placeholder="Username" onChange={(e) => setUser(e.target.value)}></input>
                         </div>
                         <div className="flex-column flex-a-start flex-grow">
                             <label htmlFor="comment-form-rating">Email: </label>
-                            <input className="default-form w-80" id="comment-form-rating" type="email" value={email} placeholder="Email Adress" onChange={(e) => setEmail(e.target.value)}></input>
+                            <input className="default-form w-100" id="comment-form-rating" type="email" value={email} placeholder="Email Adress" onChange={(e) => setEmail(e.target.value)}></input>
                         </div>
                         <div className="flex-column flex-a-start flex-grow">
                             <label htmlFor="comment-form-password">Password: </label>
-                            <input className="default-form w-80" id="comment-form-password" type="password" value={password} placeholder="Password" onChange={(e) => setPassword(e.target.value)}></input>
+                            <input className="default-form w-100" id="comment-form-password" type="password" value={password} placeholder="Password" onChange={(e) => setPassword(e.target.value)}></input>
                         </div>
                         <button className="button-react-icon button-block" type="submit"><FiSend className="react-icon" /></button>
                     </form>
                     {/* <SignupForm /> */}
-                    <h3>If you have account already, log in here: <Link to="/login" className="button-react-icon"><FiLogIn className="react-icon" /></Link></h3>
+                    <h3 className="p-2">If you have account already, log in here: <Link to="/login" className="button-react-icon"><FiLogIn className="react-icon" /></Link></h3>
                 </div>
 
             </div>

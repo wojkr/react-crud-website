@@ -21,7 +21,7 @@ const Groups = ({ isLoggedIn = false }) => {
 
 
     return (
-        <div id="groups" className="container-100 full-page pt-10vh box-sizing-border-box">
+        <div id="groups" className="container-100 full-page box-sizing-border-box">
             <div className="container">
                 {groups.length > 0 ?
                     <>
