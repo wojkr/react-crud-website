@@ -335,13 +335,19 @@ html{
 }
 .nav-button-scroll{
   position: fixed;
-  bottom: 3rem;
-  right: 3rem;
-  padding: 1rem;
+  /* bottom: 3rem;
+  right: 3rem; */
+  bottom: 5vmin;
+  right: 5vmin;
+  padding: 2.5vmin;
   color:#000;
   text-decoration: none;
   background-color: var(--light-blue-60);
   z-index: 1000;
+}
+.nav-button-scroll:active{
+  padding: 3vmin;
+  /* padding: 1.2rem; */
 }
 #showcase{
   position:fixed;
@@ -581,4 +587,26 @@ html{
   padding:1rem;
   box-shadow: 0 0 0.5rem #fff,inset 0 0 0.5rem #fff;
   background-color: #fffc;
+}
+
+@media screen {
+  .nav .flex-row{
+    flex-direction: column;
+  }
+  .nav-shown{
+    height: 9rem;
+  }
+  .nav-li{
+    display: flex;
+    flex-direction: column;
+    flex-grow: 2;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+  .nav-item{
+    width: 100%;
+    padding: 0;
+    text-align: center;
+  }
 }

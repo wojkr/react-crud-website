@@ -16,23 +16,23 @@ const Nav = ({ showNavbar, setShowShowcase, onClick }) => {
         <>
             <nav className={showNavbar ? "nav nav-shown" : "nav"}>
                 <ul className="nav-ul container flex-row flex-evenly">
-                    <li>
+                    <li className="nav-li">
                         {/* <button onClick={onClickShowShowcase}>hey</button> */}
                         <NavLink to="/" className="class-link nav-item" onClick={onClickShowShowcase}>Home</NavLink>
                     </li>
-                    <li>
+                    <li className="nav-li">
                         <NavLink to="/about" className="class-link nav-item" onClick={onClickHideShowcase}>About</NavLink>
                     </li>
-                    <li>
+                    <li className="nav-li">
                         <NavLink to="/groups" className="class-link nav-item" onClick={onClickHideShowcase}>Groups</NavLink>
                     </li>
-                    <li>
+                    <li className="nav-li">
                         <NavLink to="/products" className="class-link nav-item" onClick={onClickHideShowcase}>Products</NavLink>
                     </li>
-                    <li>
+                    <li className="nav-li">
                         <NavLink to="/about#contact" className="class-link nav-item" onClick={onClickHideShowcase}>Contact</NavLink>
                     </li>
-                    <li>
+                    <li className="nav-li">
                         <NavLink to="/comments" className="class-link nav-item" onClick={onClickHideShowcase}>Comments</NavLink>
                     </li>
                 </ul>
