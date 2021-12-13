@@ -10,6 +10,7 @@ import RegisterForm from './components/RegisterForm'
 import User from './components/User'
 import UserEdit from './components/UserEdit'
 import Groups from './components/Groups/Groups'
+import Group from './components/Groups/Group'
 import Join from './components/Join'
 import Showcase from './components/Showcase/Showcase'
 import About from './components/About/About'
@@ -107,10 +108,8 @@ const App = () => {
         {/* <Route exact path="/groups" element={
           <Groups />
         } /> */}
-        <Route exact path="/Groups" element={<Groups />}>
-          <Route path=":id" element={<Groups isLoggedIn={isLoggedIn}
-          />} />
-        </Route>
+        <Route path="/Groups" element={<Groups />} />
+        <Route path="/Group/:id" element={<Group isLoggedIn={isLoggedIn} />} />
         <Route exact path="/Events" element={<Events />}>
           <Route path=":id" element={<Events />} />
         </Route>
