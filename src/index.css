@@ -502,6 +502,10 @@ html{
   /* background:radial-gradient(ellipse farthest-corner at 105% 0%,
   hsl(36, 45%, 95%), hsl(36, 45%, 75%)  50%, #f2dfc2 80%,hsl(35, 68%, 95%) ); */
 }
+.bg-radial-tr{
+  background:radial-gradient(ellipse farthest-corner at 105% 0%,
+  hsl(36, 65%, 95%) 30%, hsl(36, 65%, 85%) 50%, #f2dfc2 80%, hsl(35, 65%, 95%) 90% );
+}
 .group-container{
   padding: 1rem 1rem;
   margin-bottom: 1rem;

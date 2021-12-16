@@ -15,7 +15,7 @@ const Group = (isLoggedIn) => {
 
     return (<>
         {
-            group.id && <div id={'group-' + group.id} className="full-page w-100">
+            group.id && <div id={'group-' + group.id} className="full-page w-100 bg-radial-tr">
                 <div className="container">
 
                     <div className="my-1">

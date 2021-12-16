@@ -18,7 +18,16 @@ const Event = ({ event }) => {
         <div id={'event-' + event.id} className="group-container w-100 flex-column">
             <div className="w-100 flex-row">
                 <div>
-                    <p>{event.title} <i>{event.group && (" hosted by " + group.name)}</i></p>
+                    <p>{event.title}
+                        <i>
+                            {event.group && " hosted by "}
+                            <Link
+                                to={"/group/" + event.groupId}
+                                className="class-link">
+                                {event.group && group.name}
+                            </Link>
+                        </i>
+                    </p>
                     <p>{event.date} {event.time}</p>
                 </div>
                 <GroupToggler showDescription={showDescription} toggleDescription={toggleDescription} />
