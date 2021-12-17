@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { getData } from "./utils/utils"
 import Event from "./Event"
+import EventBox from "./EventBox"
 import { useParams } from "react-router"
 import { Link } from "react-router-dom"
 
@@ -18,10 +19,10 @@ const Events = () => {
     }
 
     return (<>
-        <div id="events" className="container-100 full-page pt-10vh box-sizing-border-box ">
+        <div id="events" className="container-100 full-page pt-10vh box-sizing-border-box bg-radial-tr ">
             <div className="container">
                 {events ? <h1>List of Events</h1> : <h1>No upcoming events</h1>}
-                {events && events.map((event) => <Event key={event.id} event={event} />)}
+                {events && events.map((event) => <EventBox key={event.id} event={event} />)}
                 {id && <Link to="/Events" className="class-link button-react-icon" >Show All Events</Link>}
             </div>
         </div>

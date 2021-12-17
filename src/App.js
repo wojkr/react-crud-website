@@ -20,6 +20,7 @@ import Contact from './components/About/Contact'
 import CommentSection from './components/CommentSection/CommentSection'
 import Footer from './components/Footer'
 import Events from './components/Events'
+import Event from './components/Event'
 require('dotenv').config()
 
 const App = () => {
@@ -112,6 +113,9 @@ const App = () => {
         <Route path="/Group/:id" element={<Group isLoggedIn={isLoggedIn} />} />
         <Route exact path="/Events" element={<Events />}>
           <Route path=":id" element={<Events />} />
+        </Route>
+        <Route path="/Event" element={<Event />}>
+          <Route path=":id" element={<Event />} />
         </Route>
         <Route path="/Products" element={<Products />}>
           <Route path=":id" element={<Products isLoggedIn={isLoggedIn} />} />
