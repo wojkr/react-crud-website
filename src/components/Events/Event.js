@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { Link, useParams, useNavigate } from "react-router-dom"
-import UserIcon from "./UserIcon"
-import { getData } from "./utils/utils"
+import UserIcon from "../UserIcon"
+import { getData } from "../utils/utils"
 
 const Event = () => {
     const { id } = useParams()

@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
-import GroupToggler from "./Groups/GroupToggler"
-import UserIcon from "./UserIcon"
-import { getData } from "./utils/utils"
+import GroupToggler from "../Groups/GroupToggler"
+import UserIcon from "../UserIcon"
+import { getData } from "../utils/utils"
 const EventBox = ({ event }) => {
     const [group, setGroup] = useState('')
 

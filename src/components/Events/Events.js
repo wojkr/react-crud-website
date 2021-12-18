@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { getData } from "./utils/utils"
+import { getData } from "../utils/utils"
 import Event from "./Event"
 import EventBox from "./EventBox"
 import { useParams } from "react-router"
