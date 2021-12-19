@@ -21,6 +21,7 @@ import CommentSection from './components/CommentSection/CommentSection'
 import Footer from './components/Footer'
 import Events from './components/Events/Events'
 import Event from './components/Events/Event'
+import AddEvent from './components/AddEvent'
 import PageNotFound from './components/PageNotFound'
 
 require('dotenv').config()
@@ -107,7 +108,6 @@ const App = () => {
         <Route path="/Join" element={
           <Join isLoggedIn={isLoggedIn} />
         } />
-
         {/* <Route exact path="/groups" element={
           <Groups />
         } /> */}
@@ -119,11 +119,12 @@ const App = () => {
         <Route path="/Event" element={<Event />}>
           <Route path=":id" element={<Event />} />
         </Route>
+        <Route path="/AddEvent" element={<AddEvent />} />
         <Route path="/Products" element={<Products />}>
           <Route path=":id" element={<Products isLoggedIn={isLoggedIn} />} />
         </Route>
         <Route path="/Contact" element={<Contact />} />
-        <Route path="/PageNotFound" element={<PageNotFound />} />
+        <Route path="/*" element={<PageNotFound />} />
       </Routes>
       {!showShowcase && <Footer />}
     </Router>
