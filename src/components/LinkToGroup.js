@@ -9,7 +9,7 @@ const LinkToGroup = ({ id }) => {
         getData(`Groups`, setGroup, id)
     }, [id])
     return (
-        <Link to={'/group/' + id}>{group.name}</Link>
+        <Link to={'/group/' + id} className="class-link-text" >{group.name}</Link>
     )
 }
 export default LinkToGroup

@@ -7,7 +7,7 @@ const Branding = ({ setShowShowcase }) => {
 
     return (
         <>
-            <Link to="/" className="class-link" onClick={onClick}><h3 className="nav-branding"><i>coffee</i>HOUSE</h3></Link>
+            <Link to="/" className="class-link" onClick={onClick}><h3 className="title"><i> coffee</i>HOUSE </h3></Link>
         </>
     )
 }

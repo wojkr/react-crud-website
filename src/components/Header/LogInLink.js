@@ -67,7 +67,7 @@ const LogInLink = ({ setShowShowcase, isLoggedIn, setIsLoggedIn }) => {
             {isLoggedIn ?
                 <>
                     {/* <Link className="flex-row class-link" to={"/user/" + user.id} onClick={hideShowcase}>{user.name}</Link> */}
-                    <Link className="flex-row class-link" to={"/user/" + userData.userId} onClick={hideShowcase}>{userData.name}</Link>
+                    <Link className="flex-row class-link title" to={"/user/" + userData.userId} onClick={hideShowcase}>{userData.name}</Link>
                     <UserIcon userId={userData.userId} onClick={hideShowcase} />
                 </>
                 :

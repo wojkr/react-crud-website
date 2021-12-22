@@ -52,7 +52,7 @@ const User = () => {
                                 <p>Group Member of </p>
                                 <ul className="list-circle">
                                     {user.groups.map((id) => (
-                                        <li key={id} ><LinkToGroup id={id} /></li>
+                                        <li key={id} className="no-wrap"><LinkToGroup id={id} /></li>
                                     ))}
                                 </ul>
                             </div>
@@ -75,8 +75,8 @@ const User = () => {
                                 <li>Not Added Yet</li>
                             </ul>
                         }
-                        <p className="border-light" >Favorite Drink: <Link to={("/products/" + user.favoriteDrinkId)}>{user.favoriteDrink}</Link></p>
-                        <p>Favorite Cookies: <Link to={("/products/" + user.favoriteCookieId)}>{user.favoriteCookie}</Link></p>
+                        <p className="border-light" >Favorite Drink: <Link to={("/products/" + user.favoriteDrinkId)} className="class-link-text">{user.favoriteDrink}</Link></p>
+                        <p>Favorite Cookies: <Link to={("/products/" + user.favoriteCookieId)} className="class-link-text">{user.favoriteCookie}</Link></p>
                     </div>
                     <div className="flex-column">
                         {user.img ?

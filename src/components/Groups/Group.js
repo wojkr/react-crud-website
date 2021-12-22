@@ -4,7 +4,7 @@ import UserIcon from "../UserIcon"
 import { getData } from "../utils/utils"
 import CommentSection from "../CommentSection/CommentSection"
 
-const Group = (isLoggedIn) => {
+const Group = ({ isLoggedIn }) => {
     const { id } = useParams()
     const [group, setGroup] = useState({})
     // console.log(id)
@@ -19,7 +19,7 @@ const Group = (isLoggedIn) => {
                 <div className="container">
 
                     <div className="my-1">
-                        <h1>{group.name}</h1>
+                        <h1 className="title">{group.name}</h1>
                         <i>{group.shortDescription}</i>
                     </div>
                     <div className="flex-row my-1">
@@ -39,12 +39,12 @@ const Group = (isLoggedIn) => {
                             <p>{group.time}</p>
                         </div>
                         <div className="flex-column flex-a-end">
-                            <Link to="#" className="class-link button-react-icon" >Sign to the Group</Link>
+                            <Link to="/Join" className="class-link button-react-icon" >Sign to the Group</Link>
                             <Link to="/Groups" className="class-link button-react-icon" >Show All Groups</Link>
                         </div>
                     </div>
                 </div>
-                {/* <CommentSection isLoggedIn={isLoggedIn} dataName={`CommentsGroup${group.id}`} /> */}
+                <CommentSection isLoggedIn={isLoggedIn} dataName={`CommentsGroup${group.id}`} />
             </div>
         }
     </>

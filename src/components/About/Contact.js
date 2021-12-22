@@ -28,7 +28,7 @@ const Contact = () => {
     return (
         <div id="contact" className="contact w-100 flex-column flex-center">
             <div className="container w-50">
-                <h1 className="display-4">CONTACT</h1>
+                <h1 className="title">CONTACT</h1>
                 <form ref={form} onSubmit={sendEmail} className="default-box-container form flex-column flex-center">
                     {success && <p className="message-success">{success}</p>}
                     {error && <p className="message-error">{error}</p>}

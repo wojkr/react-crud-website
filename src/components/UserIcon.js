@@ -4,7 +4,7 @@ import { getData } from "./utils/utils"
 
 const UserIcon = ({ userId }) => {
 
-    const [user, setUser] = useState({})
+    const [user, setUser] = useState(false)
     useEffect(() => {
         getData('Users', setUser, userId)
     }, [userId])
