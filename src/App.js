@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { useParams } from "react-router-dom"
 
-import Userfront from "@userfront/react";
+import Userfront from "@userfront/react"
 
 import Header from './components/Header/Header'
 import LogInForm from './components/LogInForm'
@@ -32,14 +32,15 @@ const App = () => {
   const { id } = useParams()
   Userfront.init(process.env.REACT_APP_KEY_USERFRONT_INIT)
   const [offset, setOffset] = useState(0)
-  const [isLoggedIn, setIsLoggedIn] = useState(Userfront.accessToken() && true)
+  // const [isLoggedIn, setIsLoggedIn] = useState(Userfront.accessToken() && true)
+  // const [isLoggedIn, setIsLoggedIn] = useState(Userfront.accessToken() ? true : false)
+  const [isLoggedIn, setIsLoggedIn] = useState(Userfront.user ? Userfront.user.userId : false)
   const [showNavbar, setShowNavbar] = useState(false)
   const [showShowcase, setShowShowcase] = useState(false)
 
   const PasswordResetForm = Userfront.build({
     toolId: "brnnkk"
   })
-
   useEffect(() => {
     console.log(process.env)
     window.onscroll = () => {

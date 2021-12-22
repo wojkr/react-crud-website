@@ -3,14 +3,18 @@ import { FiSend, FiPlus, FiMinus } from "react-icons/fi"
 import { Link } from "react-router-dom"
 import UserIcon from "../UserIcon"
 import { getData } from "../utils/utils"
+import Userfront from "@userfront/react";
+
 
 const AddComment = ({ addComment }) => {
     const [showCommentForm, setShowCommentForm] = useState(false)
     const [user, setUser] = useState('')
     const [text, setText] = useState('')
     const [rating, setRating] = useState(3)
-    const userId = window.sessionStorage.getItem('userId')
+    // const userId = window.sessionStorage.getItem('userId')
+    const [userId] = useState(Userfront.user.userId || false)
 
+    // console.log(user)
     useEffect(() => {
         getData('Users', setUser, userId)
     }, [userId])
@@ -36,7 +40,11 @@ const AddComment = ({ addComment }) => {
             alert('please add username')
 
         } else {
-            addComment({ userId, userName, text, rating, date, votes: 0 })
+            addComment({
+                userId, "user": userName, text, rating, date, votes: 0,
+                "downVoteIds": [],
+                "upVoteIds": []
+            })
             setUser('')
             setText('')
             setRating(3)
@@ -62,7 +70,7 @@ const AddComment = ({ addComment }) => {
             {showCommentForm && <form onSubmit={onSubmit} className="flex-column">
                 <div className="container-100 flex-row flex-evenly">
                     <div className="flex-row flex-start flex-grow">
-                        <Link to={"/User/" + userId}>{user.name}</Link>
+                        <Link to={"/User/" + userId} className="class-link">{user.name}</Link>
                         <UserIcon userId={userId} />
                     </div>
                     <div className="flex-column flex-a-start flex-grow">

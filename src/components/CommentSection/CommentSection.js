@@ -3,7 +3,8 @@ import { FiLogIn } from 'react-icons/fi'
 import { getData, ALERT } from '../utils/utils'
 import { Link } from 'react-router-dom'
 import Comments from './Comments'
-import HeaderCom from './HeaderCom'
+// import HeaderCom from './HeaderCom'
+import AddComment from './AddComment'
 import Sort from './Sort'
 import NavComments from './NavComments'
 import Alert from '../utils/Alert'
@@ -128,11 +129,12 @@ const CommentSection = ({ isLoggedIn, dataName }) => {
         <>
             <div className="comment-section" id="comment-section" >
                 <div className="container">
-                    <h1>CommentSection!</h1>
+                    <h1 className="title">CommentSection!</h1>
                     {isLoggedIn ?
-                        <HeaderCom
-                            addComment={COMMENTS.add}
-                        />
+                        <AddComment addComment={COMMENTS.add} />
+                        // <HeaderCom
+                        //     addComment={COMMENTS.add}
+                        // />
                         :
                         <h3>
                             <Link to="/login" className="button-react-icon">
