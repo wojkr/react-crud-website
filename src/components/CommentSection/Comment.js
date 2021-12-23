@@ -12,10 +12,6 @@ const Comment = ({ editComment, deleteComment, comment, isLoggedIn }) => {
     const [showEdit, setShowEdit] = useState(false)
     const editToggler = () => setShowEdit(!showEdit)
     const [userLogged] = useState(Userfront.user || false)
-    // console.log(isLoggedIn && userLogged.userId && userLogged.userId.toString() === comment.userId.toString())
-    // console.log(userLogged.userId.toString())
-    // console.log(comment.userId.toString())
-    console.log(comment)
     const content = () => {
         if (showEdit) {
             return (<>
@@ -30,7 +26,6 @@ const Comment = ({ editComment, deleteComment, comment, isLoggedIn }) => {
                 <div className="default-box-container flex-column flex-a-start">
                     <div className="container-100 flex-row comment-row-1">
                         <div className="flex-row">
-                            {/* <h3 className="comment-user">{comment.user}</h3> */}
                             <Link to={"/User/" + comment.userId} className="class-link title">{comment.user}</Link>
                             <UserIcon userId={comment.userId} />
                             <p className="comment-rating">Rated: <strong>{comment.rating}/5</strong></p>
@@ -68,60 +63,3 @@ const Comment = ({ editComment, deleteComment, comment, isLoggedIn }) => {
 }
 
 export default Comment
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// const Comment = ({ comment }) => {
-//     return (
-//         <div className='task'>
-//             <h3>User: {comment.user}</h3>
-//             <p>Comment: {comment.text}</p>
-//             <p>Rating: {comment.rating}</p>
-//         </div>
-//     )
-// }
-
-// export default Comment
