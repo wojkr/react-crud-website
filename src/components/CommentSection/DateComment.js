@@ -1,9 +1,9 @@
-const DateComment = ({ comment }) => {
-    const dateToString = (date) => {
-        const newDate = new Date(date)
+const DateComment = ({ date, text }) => {
+    const dateToString = (dateNum) => {
+        const newDate = new Date(dateNum)
         return newDate.toGMTString()
     }
-    let time = Date.now() - comment.date;
+    let time = Date.now() - date;
     const timeCalc = () => {
         changeTimeUnits(1000, 60, 'second')
         changeTimeUnits(60, 60, 'minute')
@@ -11,7 +11,7 @@ const DateComment = ({ comment }) => {
         changeTimeUnits(24, 7, 'day')
         changeTimeUnits(7, 53, 'week')
         if (time > 52 && typeof (time) === 'number') {
-            time = ('on ' + dateToString(comment.date))
+            time = ('on ' + dateToString(date))
         }
         return time
     }
@@ -23,13 +23,13 @@ const DateComment = ({ comment }) => {
             if (Math.floor(time) !== 1) {
                 unitsName += 's'
             }
-            time = `Added ${Math.floor(time)} ${unitsName} ago`
+            time = `${text} ${Math.floor(time)} ${unitsName} ago`
         }
     }
 
     return (
         <>
-            <p className="comment-date"> <i>{timeCalc()}</i></p>
+            {date && <p className="comment-date"> <i>{timeCalc()}</i></p>}
         </>
     )
 }

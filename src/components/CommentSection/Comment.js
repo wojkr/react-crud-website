@@ -47,8 +47,8 @@ const Comment = ({ editComment, deleteComment, comment, isLoggedIn }) => {
                         </span>
                     </div>
                     <div className="comment-row-2 container-100 ">
-
-                        <DateComment comment={comment} />
+                        <DateComment date={comment.date} text="Added" />
+                        <DateComment date={comment.editDate || false} text="Edited" />
                         <p className="default-box-container-inner">{comment.text}</p>
                     </div>
                     <Votes comment={comment} editComment={editComment} isLoggedIn={isLoggedIn} />
