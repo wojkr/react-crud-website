@@ -41,11 +41,15 @@ const AddComment = ({ addComment }) => {
 
         } else {
             addComment({
-                userId, "user": userName, text, rating, date, votes: 0,
+                userId,
+                "user": userName,
+                text,
+                rating,
+                date,
+                votes: 0,
                 "downVoteIds": [],
                 "upVoteIds": []
             })
-            setUser('')
             setText('')
             setRating(3)
         }
@@ -70,7 +74,7 @@ const AddComment = ({ addComment }) => {
             {showCommentForm && <form onSubmit={onSubmit} className="flex-column">
                 <div className="container-100 flex-row flex-evenly">
                     <div className="flex-row flex-start flex-grow">
-                        <Link to={"/User/" + userId} className="class-link">{user.name}</Link>
+                        <Link to={"/User/" + userId} className="class-link title">{user.name}</Link>
                         <UserIcon userId={userId} />
                     </div>
                     <div className="flex-column flex-a-start flex-grow">
@@ -94,62 +98,3 @@ const AddComment = ({ addComment }) => {
 }
 
 export default AddComment
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// import { useState } from 'react'
-
-// const AddComment = ({ onAddComment }) => {
-
-//     const [user, setUser] = useState('')
-//     const [text, setComment] = useState('')
-//     const [rating, setRating] = useState(3)
-
-//     const onSubmit = (e) => {
-
-//         e.preventDefault()
-
-//         onAddComment({ user, text, rating })
-
-//         setUser('')
-//         setComment('')
-//         setRating(3)
-
-//     }
-
-//     return (
-//         <>
-//             <form onSubmit={onSubmit}>
-//                 <input type="text" value={user} placeholder="username" onChange={(e) => setUser(e.target.value)}></input>
-//                 <input type="text" value={text} placeholder="comment" onChange={(e) => setComment(e.target.value)}></input>
-//                 <input type="number" value={rating} placeholder="rating" onChange={(e) => setRating(e.target.value)}></input>
-//                 <input type="submit" value="Comment!"></input>
-//             </form >
-//         </>
-//     )
-// }
-
-// export default AddComment
