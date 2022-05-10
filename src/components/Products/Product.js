@@ -3,7 +3,7 @@ import { useParams, Link } from 'react-router-dom'
 import Nutritions from "./Nutritions"
 import GoBack from "../GoBack"
 
-const Product = ({ product, details }) => {
+const Product = ({ product, details, isLoggedIn }) => {
     const [showDetails, setShowDetails] = useState(details)
     const [fullPageMode, setFullPageMode] = useState(false)
     const { id } = useParams()
@@ -32,6 +32,15 @@ const Product = ({ product, details }) => {
                                 <h3>£{product.price}</h3>
                             </div>
                             <p>{product.description}</p>
+                            {isLoggedIn &&
+                                <div className="flex-row flex-center">
+                                    <button className="button-react-icon">
+                                        <h1>
+                                            add to favorites
+                                        </h1>
+                                    </button>
+                                </div>
+                            }
                             {product.info &&
                                 <ul className="border-light list-circle">
                                     {product.info && product.info.map((info) => (

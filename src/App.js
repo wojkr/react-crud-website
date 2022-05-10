@@ -121,7 +121,7 @@ const App = () => {
           <Route path=":id" element={<Event />} />
         </Route>
         <Route path="/AddEvent" element={<AddEvent />} />
-        <Route path="/Products" element={<Products />}>
+        <Route path="/Products" element={<Products isLoggedIn={isLoggedIn} />}>
           <Route path=":id" element={<Products isLoggedIn={isLoggedIn} />} />
         </Route>
         <Route path="/Contact" element={<Contact />} />

@@ -25,9 +25,9 @@ const Products = ({ isLoggedIn }) => {
                 <div className="flex-row flex-center flex-a-stretch flex-wrap">
                     {products.length > 1 ?
                         products.map(product => (
-                            <Product key={product.id} product={product} details={false} />))
+                            <Product key={product.id} product={product} details={false} isLoggedIn={isLoggedIn} />))
                         :
-                        <Product product={products} details={true} />
+                        <Product product={products} details={true} isLoggedIn={isLoggedIn} />
                     }
                 </div>
             </div>
